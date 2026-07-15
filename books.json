@@ -1,0 +1,447 @@
+[
+  {
+    "title": "LAVORO DI MERDA",
+    "category": ["Satira", "Manuale"],
+    "description": "Manuale di sopravvivenza nella vita lavorativa moderna.",
+    "sinossi": "Un viaggio ironico e realistico nel mondo del lavoro moderno, tra stress, colleghi assurdi e dinamiche aziendali tossiche. Il libro esplora con sarcasmo la quotidianità lavorativa e le sue contraddizioni.",
+    "amazon": "https://www.amazon.it/LAVORO-MERDA-Nicola-Fiore-NIFIO/dp/B0FG3FWNXG",
+    "cover": "images/LAVORO_DI_MERDA.jpg"
+  },
+  {
+    "title": "MAMMA HO PERSO IL LAVORO",
+    "category": ["Narrativa", "Commedia"],
+    "description": "Un uomo perde il lavoro e si ritrova a gestire una vita familiare caotica tra una madre invadente e una moglie che vuole un figlio.",
+    "sinossi": "Dopo essere stato licenziato, il protagonista deve affrontare una situazione familiare sempre più complicata. La madre decide di trasferirsi a casa sua, creando una convivenza esplosiva fatta di tensioni, comicità e momenti di riflessione sulla famiglia e sulle relazioni.",
+    "amazon": "https://www.amazon.it/MAMMA-PERSO-LAVORO-Nicola-Fiore-ebook/dp/B0FL2P5Z98",
+    "cover": "images/mamma-perso-lavoro.jpg"
+  },
+  {
+    "title": "VIRGO FIDELIS: La Storia dell'Arma dei Carabinieri",
+    "category": ["Storia", "Saggistica"],
+    "description": "La storia e il significato della Virgo Fidelis, patrona dell’Arma dei Carabinieri.",
+    "sinossi": "Un approfondimento sulla figura della Virgo Fidelis, titolo mariano legato alla fedeltà e scelto come patrona dell’Arma dei Carabinieri nel dopoguerra. Il libro esplora il contesto storico, religioso e simbolico della devozione, collegandolo al motto dell’Arma 'Nei secoli fedele' e al ruolo dei Carabinieri nella storia italiana.",
+    "amazon": "https://www.amazon.it/VIRGO-FIDELIS-Storia-dellArma-Carabinieri-ebook/dp/B0FV94JDS9",
+    "cover": "images/virgo-fidelis.jpg"
+  },
+  {
+    "title": "IL MONDO FRA CENT'ANNI",
+    "category": ["Saggistica", "Futuro"],
+    "description": "Una riflessione sul possibile futuro dell’umanità tra tecnologia, società e cambiamenti globali.",
+    "sinossi": "Il libro analizza scenari futuri possibili del mondo tra innovazione tecnologica, evoluzione sociale e trasformazioni geopolitiche. Attraverso una narrazione riflessiva, esplora come l’umanità potrebbe cambiare nei prossimi cento anni, tra opportunità e rischi legati al progresso.",
+    "amazon": "https://www.amazon.it/mondo-fra-centanni-Nicola-Fiore-ebook/dp/B0GD87S1TF",
+    "cover": "images/mondo-fra-centanni.jpg"
+  },
+  {
+    "title": "NULLA SOTTO LA PELLE",
+    "category": ["Thriller", "Psicologico"],
+    "description": "Un thriller psicologico che esplora le zone più oscure della mente umana e delle relazioni.",
+    "sinossi": "Il romanzo segue una storia intensa e disturbante in cui i confini tra realtà e percezione iniziano a dissolversi. Il protagonista si ritrova intrappolato in una spirale di eventi e sensazioni che mettono in discussione la sua identità e la fiducia nella realtà che lo circonda.",
+    "amazon": "https://www.amazon.it/NULLA-SOTTO-PELLE-Nicola-Fiore-ebook/dp/B0FLF5D59M",
+    "cover": "images/nulla-sotto-la-pelle.jpg"
+  },
+  {
+    "title": "VAMPYRE BOSS: IL MIO CAPO È UN VAMPIRO",
+    "category": ["Dark Comedy", "Paranormal Romance"],
+    "description": "Una storia tra ufficio e soprannaturale dove il capo non è umano… ma un vampiro.",
+    "sinossi": "In un ambiente lavorativo assurdo e surreale, il protagonista scopre che il suo capo non è solo autoritario ma anche un vampiro immortale.",
+    "amazon": "https://www.amazon.it/VAMPYRE-BOSS-mio-Capo-Vampiro-ebook/dp/B0FY3W2QL3",
+    "cover": "images/vampyre-boss.jpg"
+  },
+  {
+    "title": "GIOVINAZZO COI MIEI OCCHI versione in B/N",
+    "category": ["Storia", "Fotografia", "Emozione"],
+    "description": "Un racconto evocativo legato a immagini e memoria di Giovinazzo.",
+    "sinossi": "Il libro intreccia ricordi e osservazioni legate alla città di Giovinazzo, trasformando immagini in narrazione emotiva.",
+    "amazon": "https://www.amazon.it/GIOVINAZZO-occhi-Nicola-Fiore-NIFIO/dp/B0H6C2PBVK",
+    "cover": "images/giovinazzo-occhi.jpg"
+  },
+  {
+    "title": "UN GIORNO QUALUNQUE NEGLI ANNI '80",
+    "category": ["Illustrazioni", "Fotografia"],
+    "description": "Un viaggio nella quotidianità degli anni ’80.",
+    "sinossi": "Un racconto che cattura atmosfere e dettagli di un’epoca analogica e autentica.",
+    "amazon": "https://www.amazon.it/Giorno-Qualunque-negli-Anni-80-ebook/dp/B0G39VXY86",
+    "cover": "images/giorno-qualunque-anni-80.jpg"
+  },
+  {
+    "title": "BREAKPOINT: Fino all’ultimo respiro",
+    "category": ["Thriller", "Azione"],
+    "description": "Un thriller ad alta tensione.",
+    "sinossi": "Una corsa contro il tempo tra pericoli e decisioni estreme.",
+    "amazon": "https://www.amazon.it/BREAKPOINT-allultimo-respiro-Nicola-Fiore-ebook/dp/B0GQVLZKDF",
+    "cover": "images/breakpoint-fino-all-ultimo-respiro.jpg"
+  },
+  {
+    "title": "VITA DI MERDA: Manuale di resistenza quotidiana",
+    "category": ["Saggio", "Ironico", "Satira"],
+    "description": "Manuale ironico di sopravvivenza quotidiana.",
+    "sinossi": "Un approccio sarcastico alle difficoltà della vita moderna.",
+    "amazon": "https://www.amazon.it/VITA-MERDA-Manuale-Resistenza-quotidiana-ebook/dp/B0FJYDF5T7",
+    "cover": "images/vita-di-merda-manuale-resistenza.jpg"
+  },
+  {
+  "title": "SETTIMANA DI MERDA: Manuale della gestione della disperazione",
+  "category": [
+    "Satira",
+    "Manuale",
+    "Umorismo"
+  ],
+  "description": "Un manuale ironico per affrontare una settimana in cui tutto sembra andare storto.",
+  "sinossi": "Sette giorni possono bastare per mettere a dura prova chiunque. Tra imprevisti, lavoro, relazioni e sfortuna, ogni giornata sembra superare la precedente in un'escalation di situazioni assurde. Con il suo stile sarcastico e diretto, Nicola Fiore trasforma la disperazione quotidiana in un racconto ironico, dimostrando che spesso l'unico modo per sopravvivere alle settimane peggiori è imparare a riderci sopra.",
+  "amazon": "https://www.amazon.it/SETTIMANA-MERDA-Manuale-gestione-disperazione-ebook/dp/B0FMXJ6XGS",
+  "cover": "images/settimana-di-merda.jpg"
+},
+  {
+  "title": "CAPO DI MERDA: Manuale dell'Ammutinamento",
+  "category": [
+    "Satira",
+    "Manuale",
+    "Umorismo"
+  ],
+  "description": "Una satira irriverente sul rapporto tra dipendenti e capi tossici, raccontata con ironia e sarcasmo.",
+  "sinossi": "Esiste un capo capace di trasformare ogni giornata lavorativa in un incubo. Questo manuale affronta con umorismo le dinamiche del peggior management possibile, tra ordini assurdi, riunioni infinite, favoritismi e decisioni incomprensibili. Un viaggio satirico dedicato a chi, almeno una volta nella vita, ha sognato un ammutinamento contro il proprio superiore, trasformando la frustrazione quotidiana in una risata liberatoria.",
+  "amazon": "https://www.amazon.it/CAPO-MERDA-Manuale-Ammutinamento-Collana-ebook/dp/B0FN88FD4D",
+  "cover": "images/capo-di-merda.jpg"
+},
+  {
+  "title": "FERIE DI MERDA: Manuale di Diritto alla Disconnessione",
+  "category": [
+    "Satira",
+    "Manuale",
+    "Umorismo"
+  ],
+  "description": "Una guida ironica dedicata a chi sogna ferie vere, lontano da mail, telefonate e chat di lavoro.",
+  "sinossi": "Le ferie dovrebbero essere sinonimo di riposo, ma per molti significano notifiche continue, telefonate improvvise e richieste 'urgentissime' che non possono aspettare. Con il suo stile sarcastico e dissacrante, Nicola Fiore affronta il tema del diritto alla disconnessione, trasformando situazioni vissute da milioni di lavoratori in una satira pungente e divertente. Un manuale dedicato a chi vorrebbe semplicemente spegnere il telefono... senza sentirsi in colpa.",
+  "amazon": "https://www.amazon.it/FERIE-MERDA-Manuale-Diritto-Disconnessione-ebook/dp/B0FPGMQJF8",
+  "cover": "images/ferie-di-merda.jpg"
+},
+  {
+  "title": "COLLEGA DI MERDA: Manuale Anti-Omicidio",
+  "category": [
+    "Satira",
+    "Manuale",
+    "Umorismo"
+  ],
+  "description": "Una guida ironica per sopravvivere ai colleghi più insopportabili senza perdere il controllo.",
+  "sinossi": "C'è sempre quel collega che riesce a trasformare anche la giornata più tranquilla in un inferno: il lamentoso cronico, il leccapiedi, quello che scarica il lavoro sugli altri, l'esperto di tutto e quello che sparisce quando c'è da lavorare. Con il suo stile sarcastico e irriverente, Nicola Fiore racconta le dinamiche più assurde dell'ufficio moderno, trasformando la frustrazione quotidiana in una raccolta di episodi esilaranti. Un manuale satirico dedicato a chi, almeno una volta, ha pensato che il vero superpotere fosse riuscire a non strangolare un collega.",
+  "amazon": "https://www.amazon.it/COLLEGA-MERDA-Manuale-Anti-Omicidio-Collana-ebook/dp/B0G44Y4TBW",
+  "cover": "images/collega-di-merda.jpg"
+},
+  {
+  "title": "NATALE DI MERDA: Manuale di Sopravvivenza all'Avvento",
+  "category": [
+    "Satira",
+    "Manuale",
+    "Umorismo"
+  ],
+  "description": "Una guida ironica per sopravvivere allo stress, alle dinamiche familiari e al caos del periodo natalizio.",
+  "sinossi": "Il Natale dovrebbe essere un momento di pace, ma spesso si trasforma in una maratona di stress, pranzi infiniti, parenti invadenti e situazioni fuori controllo. Con il suo stile sarcastico e diretto, Nicola Fiore racconta il lato meno poetico delle feste, trasformando l’Avvento in una satira tagliente sulla famiglia, le aspettative sociali e la sopravvivenza emotiva. Un manuale per arrivare indenni al 26 dicembre.",
+  "amazon": "https://www.amazon.it/NATALE-MERDA-Manuale-Preparazione-allAvvento-ebook/dp/B0G4MMGJJJ",
+  "cover": "images/natale-di-merda.jpg"
+},
+  {
+  "title": "AZIENDA DI MERDA",
+  "category": [
+    "Satira",
+    "Manuale",
+    "Umorismo"
+  ],
+  "description": "Una satira tagliente sul mondo aziendale moderno e sulle sue dinamiche assurde.",
+  "sinossi": "Il mondo aziendale moderno è fatto di riunioni infinite, gerarchie incomprensibili, obiettivi impossibili e una burocrazia che sembra progettata per complicare anche le cose più semplici. Con il suo stile ironico e diretto, Nicola Fiore racconta l’ecosistema aziendale come un labirinto di contraddizioni, dove sopravvivere diventa un’arte e la frustrazione quotidiana si trasforma in normalità. Un manuale satirico per chi ha imparato che lavorare in azienda è spesso più una questione di resistenza mentale che di competenze.",
+  "amazon": "https://www.amazon.it/AZIENDA-MERDA-Senza-sottotitolo-Collana-ebook/dp/B0GZQQZYNM",
+  "cover": "images/azienda-di-merda.jpg"
+},
+  {
+  "title": "IL COLLEGA DELLA PORTA ACCANTO",
+  "category": [
+    "Thriller",
+    "Suspense"
+  ],
+  "description": "Thriller ricco di suspense, segreti e colpi di scena. Marco si ritroverà coinvolto in un gioco mortale dove nulla è come sembra.",
+  "sinossi": "Marco conduce una vita monotona in un’azienda high-tech, finché l’arrivo del misterioso collega Luca sconvolge ogni equilibrio. Quando una serie di morti sospette colpisce l’azienda, Marco si ritrova coinvolto in un intricato gioco fatto di codici criptati, segreti e paura. Mentre si avvicina alla verità, capisce che nulla è come sembra… e che potrebbe essere lui il vero bersaglio.",
+  "amazon": "https://www.amazon.it/collega-della-porta-accanto-ebook/dp/B0FR9T82XF",
+  "cover": "images/collega-della-porta-accanto.jpg"
+},
+  {
+  "title": "VELOCITÀ E ONORE: La Storia dell’Aeronautica Militare Italiana",
+  "category": [
+    "Storia",
+    "Saggistica",
+    "Militare"
+  ],
+  "description": "Un racconto dedicato alla storia, ai valori e all’evoluzione dell’Aeronautica Militare Italiana.",
+  "sinossi": "Il libro ripercorre la storia dell’Aeronautica Militare Italiana, dalle origini fino all’era moderna, mettendo in evidenza i progressi tecnologici, le missioni operative e il ruolo strategico nella difesa del Paese. Attraverso un approccio narrativo e documentato, vengono esplorati i valori di velocità, onore e dedizione che caratterizzano il personale militare e l’evoluzione delle capacità aerospaziali italiane nel contesto internazionale.",
+  "amazon": "https://www.amazon.it/VELOCIT%C3%80-ONORE-dellAeronautica-Militare-Italiana-ebook/dp/B0GJTHLPL8",
+  "cover": "images/velocita-e-onore.jpg"
+},
+  {
+  "title": "FUOCO E CORAGGIO: La Storia dei Vigili del Fuoco in Italia",
+  "category": [
+    "Storia",
+    "Saggistica",
+    "Militare"
+  ],
+  "description": "Un racconto dedicato alla storia e al valore del Corpo Nazionale dei Vigili del Fuoco in Italia.",
+  "sinossi": "Il libro ripercorre la nascita e l’evoluzione del Corpo Nazionale dei Vigili del Fuoco in Italia, evidenziando le trasformazioni storiche, organizzative e operative che lo hanno reso un punto di riferimento nella gestione delle emergenze. Attraverso episodi, interventi e contesti reali, viene messo in luce il coraggio, la professionalità e il senso del dovere che caratterizzano i vigili del fuoco, impegnati quotidianamente nella tutela delle persone e del territorio.",
+  "amazon": "https://www.amazon.it/FUOCO-CORAGGIO-Storia-Vigili-Italia-ebook/dp/B0G2YB2DRX",
+  "cover": "images/fuoco-e-coraggio.jpg"
+},
+  {
+  "title": "LE PAROLE INCROCIATE DEL LAVORO",
+  "category": [
+    "Enigmistica",
+    "Cruciverba",
+    "Sudoku",
+    "Giochi"
+  ],
+  "description": "Una raccolta di giochi enigmistici a tema lavorativo tra cruciverba, sudoku e altri esercizi di logica.",
+  "sinossi": "Una raccolta di attività enigmistici pensata per chi vuole unire il divertimento dei giochi logici alla tematica del mondo del lavoro. Cruciverba, sudoku e altri giochi diventano strumenti per allenare la mente attraverso contenuti ispirati alla vita professionale quotidiana, trasformando parole e concetti del lavoro in sfide ludiche e stimolanti.",
+  "amazon": "https://www.amazon.it/PAROLE-INCROCIATE-DEL-LAVORO-durante/dp/B0H4MF7GJG",
+  "cover": "images/parole-incrociate-del-lavoro.jpg"
+},
+  {
+  "title": "MANDALA A FANC*… LA TUA AZIENDA",
+  "category": [
+    "Mandala",
+    "Antistress",
+    "Attività creative",
+    "Satira"
+  ],
+  "description": "Un libro di mandala e attività creative a tema aziendale pensato per scaricare lo stress in modo ironico.",
+  "sinossi": "Un percorso di mandala e attività grafiche pensato per trasformare la frustrazione del mondo aziendale in un momento creativo e antistress. Attraverso disegni e schemi da completare, il libro affronta con ironia le dinamiche lavorative e offre un modo alternativo per gestire tensioni e stress quotidiano.",
+  "amazon": "https://www.amazon.it/MANDALA-FANC-TUA-AZIENDA-velenose/dp/B0FGW8GFZ5",
+  "cover": "images/mandala-a-fanc-la-tua-azienda.jpg"
+},
+  {
+  "title": "IL GRANDE LIBRO DEGLI ANIMALI",
+  "category": [
+    "Bambini",
+    "Animali",
+    "Educativo",
+    "Illustrazioni",
+    "Colorare"
+  ],
+  "description": "Un libro illustrato sugli animali pensato per bambini, ricco di immagini e contenuti educativi.",
+  "sinossi": "Un grande libro illustrato dedicato al mondo degli animali, pensato per i più piccoli. Attraverso immagini colorate e descrizioni semplici, accompagna il lettore alla scoperta delle specie animali, dei loro habitat e delle loro caratteristiche principali. Un percorso educativo che unisce curiosità e apprendimento visivo.",
+  "amazon": "https://www.amazon.it/Grande-Libro-degli-Animali-Colorare/dp/B0FPD3C4JK",
+  "cover": "images/grande-libro-degli-animali.jpg"
+},
+  {
+  "title": "ARCHITETTURE FANTASTICHE E DOVE TROVARLE",
+  "category": [
+    "Arte",
+    "Colorare"
+  ],
+  "description": "Un libro da colorare per adulti dedicato ad architetture fantastiche e strutture straordinarie.",
+  "sinossi": "Un libro da colorare pensato per adulti che unisce architettura e creatività. Le pagine raccolgono strutture fantastiche, edifici immaginari e architetture impossibili da esplorare attraverso il colore. Ogni illustrazione invita a rilassarsi e a dare vita alle forme architettoniche con la propria interpretazione artistica, trasformando il disegno in un’esperienza antistress e creativa.",
+  "amazon": "https://www.amazon.it/ARCHITETTURE-FANTASTICHE-DOVE-TROVARLE-impossibili/dp/B0FSZKX3KD",
+  "cover": "images/architetture-fantastiche-dove-trovarle.jpg"
+},
+  {
+  "title": "ROBOT FANTASTICI E DOVE TROVARLI",
+  "category": [
+    "Colorare",
+    "Arte"
+  ],
+  "description": "Un libro da colorare per adulti dedicato a robot fantastici e scenari futuristici.",
+  "sinossi": "Un libro da colorare pensato per adulti che raccoglie illustrazioni di robot fantastici e scenari futuristici. Ogni pagina offre strutture e figure meccaniche dettagliate da personalizzare con i colori, trasformando la tecnologia e l’immaginazione in un’esperienza creativa e antistress. Un percorso artistico che unisce relax e fantasia attraverso il mondo della robotica immaginaria.",
+  "amazon": "https://www.amazon.it/ROBOT-FANTASTICI-DOVE-TROVARLI-impossibili/dp/B0FTFC6WG2",
+  "cover": "images/robot-fantastici-dove-trovarli.jpg"
+},
+  {
+  "title": "IMBARCAZIONI FANTASTICHE E DOVE TROVARLE",
+  "category": [
+    "Colorare",
+    "Arte"
+  ],
+  "description": "Un libro da colorare per adulti dedicato a imbarcazioni e navi fantastiche e immaginarie.",
+  "sinossi": "Un libro da colorare pensato per adulti che raccoglie illustrazioni di imbarcazioni fantastiche, navi immaginarie e scenari marittimi surreali. Ogni pagina offre dettagli artistici da personalizzare con i colori, trasformando il tema del mare e della navigazione in un’esperienza creativa, rilassante e antistress.",
+  "amazon": "https://www.amazon.it/IMBARCAZIONI-FANTASTICHE-DOVE-TROVARLE-impossibili/dp/B0FTVL4TMP",
+  "cover": "images/imbarcazioni-fantastiche-dove-trovarle.jpg"
+},
+  {
+  "title": "AEROPLANI FANTASTICI E DOVE TROVARLI",
+  "category": [
+    "Colorare",
+    "Arte"  
+  ],
+  "description": "Un libro da colorare per adulti dedicato ad aeroplani fantastici e scenari aerei immaginari.",
+  "sinossi": "Un libro da colorare pensato per adulti che raccoglie illustrazioni di aeroplani fantastici, velivoli immaginari e scenari aerei surreali. Ogni pagina è progettata per offrire un’esperienza creativa e rilassante, permettendo di trasformare strutture e forme aeronautiche in opere personalizzate attraverso il colore.",
+  "amazon": "https://www.amazon.it/AEROPLANI-FANTASTICI-DOVE-TROVARLI-impossibili/dp/B0FTVNNP61",
+  "cover": "images/aeroplani-fantastici-dove-trovarli.jpg"
+},
+  {
+  "title": "BEAUTY OF DARKNESS",
+  "category": [
+    "Colorare",
+    "Arte",
+    "Antistress"
+  ],
+  "description": "Un libro da colorare per adulti con illustrazioni dettagliate a tema dark e suggestivo.",
+  "sinossi": "Un libro da colorare pensato per adulti che raccoglie illustrazioni dettagliate dal forte impatto visivo, caratterizzate da atmosfere oscure e suggestive. Ogni pagina è progettata per offrire un’esperienza creativa e rilassante, trasformando ombre, figure e scenari dark in opere personalizzate attraverso il colore. Un percorso artistico che unisce relax, concentrazione e immaginazione.",
+  "amazon": "https://www.amazon.it/Beauty-Darkness-colorare-illustrazioni-dettagliate/dp/B0FSWP455M",
+  "cover": "images/beauty-of-darkness.jpg"
+},
+  {
+  "title": "HALLOWEEN COLORING BOOK",
+  "category": [
+    "Colorare",
+    "Bambini"
+  ],
+  "description": "Un libro da colorare per bambini a tema Halloween con disegni semplici e divertenti.",
+  "sinossi": "Un libro da colorare pensato per bambini che raccoglie illustrazioni a tema Halloween come zucche, fantasmi, streghe e altre figure tipiche della festività. Le pagine sono progettate per essere semplici e divertenti, favorendo la creatività e l’intrattenimento dei più piccoli attraverso attività di colorazione.",
+  "amazon": "https://www.amazon.it/Halloween-Coloring-Book-Kids-Ages/dp/B0FSL4YQZN",
+  "cover": "images/halloween-coloring-book.jpg"
+},
+  {
+  "title": "GIOVINAZZO COI MIEI OCCHI versione A COLORI",
+  "category": [
+    "Storia",
+    "Fotografia",
+    "Emozione"
+  ],
+  "description": "Un racconto visivo ed emotivo dedicato alla città di Giovinazzo e al suo territorio.",
+  "sinossi": "Un libro che racconta Giovinazzo attraverso uno sguardo personale e intimo, intrecciando immagini, ricordi e osservazioni sul territorio. Le fotografie e le impressioni narrative diventano strumenti per restituire l’identità del luogo, trasformando la città in un racconto fatto di emozioni, memoria e percezione personale.",
+  "amazon": "https://www.amazon.it/GIOVINAZZO-occhi-Nicola-Fiore-NIFIO/dp/B0H6C5LGFS",
+  "cover": "images/giovinazzo-occhi.jpg"
+},
+  {
+  "title": "DIARIO DELLA MOTIVAZIONE",
+  "category": [
+    "Crescita personale",
+    "Self-help",
+    "Diario"
+  ],
+  "description": "Un diario guidato per sviluppare motivazione, disciplina e costanza nel raggiungimento degli obiettivi personali.",
+  "sinossi": "Un diario strutturato per accompagnare il lettore nello sviluppo della motivazione quotidiana e nella costruzione di abitudini positive. Attraverso riflessioni e strumenti pratici, il libro aiuta a mantenere la concentrazione sugli obiettivi e a superare i momenti di calo motivazionale, trasformando le intenzioni in azioni concrete e costanti.",
+  "amazon": "https://www.amazon.it/Diario-della-Motivazione-mantenere-raggiungere/dp/B0H2J2GQH3",
+  "cover": "images/diario-della-motivazione.jpg"
+},
+  {
+  "title": "DIARIO DELLE EMOZIONI",
+  "category": [
+    "Crescita personale",
+    "Self-help",
+    "Diario"
+  ],
+  "description": "Un diario per riconoscere, comprendere e gestire le emozioni quotidiane.",
+  "sinossi": "Un diario guidato che aiuta il lettore a riconoscere e comprendere le emozioni fondamentali come rabbia, paura, tristezza e gioia. Attraverso attività di scrittura e riflessione, favorisce la consapevolezza emotiva e lo sviluppo dell’intelligenza emotiva.",
+  "amazon": "https://www.amazon.it/Diario-delle-Emozioni-Comprendi-gestisci/dp/B0H3965YJ5",
+  "cover": "images/diario-delle-emozioni.jpg"
+},
+  {
+  "title": "DIARIO DELLE ABITUDINI",
+  "category": [
+    "Crescita personale",
+    "Self-help",
+    "Diario"
+  ],
+  "description": "Un diario guidato per costruire, monitorare e mantenere nuove abitudini quotidiane.",
+  "sinossi": "Un diario pensato per aiutare il lettore a sviluppare e consolidare nuove abitudini attraverso un sistema di tracciamento giornaliero. Strutturato per favorire la costanza e la disciplina, permette di monitorare i progressi nel tempo e migliorare la propria routine personale attraverso piccoli passi quotidiani.",
+  "amazon": "https://www.amazon.it/Diario-delle-Abitudini-Costruisci-abitudini/dp/B0H392S368",
+  "cover": "images/diario-delle-abitudini.jpg"
+},
+  {
+  "title": "DIARIO DEL TEMPO",
+  "category": [
+    "Crescita personale",
+    "Self-help",
+    "Diario"
+  ],
+  "description": "Un diario guidato per monitorare e migliorare la gestione del tempo quotidiano.",
+  "sinossi": "Un diario pensato per aiutare il lettore a prendere consapevolezza di come utilizza il proprio tempo durante la giornata. Attraverso strumenti di monitoraggio e riflessione, supporta la creazione di una routine più equilibrata ed efficace, migliorando produttività, organizzazione e consapevolezza personale.",
+  "amazon": "https://www.amazon.it/Diario-del-Tempo-Monitora-giornate/dp/B0H391GR4C",
+  "cover": "images/diario-del-tempo.jpg"
+},
+  {
+  "title": "DIARIO DEL SONNO",
+  "category": [
+    "Crescita personale",
+    "Self-help",
+    "Diario"
+  ],
+  "description": "Un diario guidato per monitorare e migliorare la qualità del sonno e le abitudini notturne.",
+  "sinossi": "Un diario pensato per aiutare il lettore a osservare e comprendere le proprie abitudini legate al sonno. Attraverso schede e strumenti di monitoraggio quotidiano, supporta il miglioramento della qualità del riposo, favorendo una maggiore consapevolezza dei ritmi sonno-veglia e del benessere generale.",
+  "amazon": "https://www.amazon.it/Diario-della-Motivazione-mantenere-raggiungere/dp/B0H38YTNNC",
+  "cover": "images/diario-del-sonno.jpg"
+},
+  {
+  "title": "DIARIO ANTI-ANSIA",
+  "category": [
+    "Crescita personale",
+    "Self-help",
+    "Diario"
+  ],
+  "description": "Un diario guidato per ridurre ansia e stress e ritrovare serenità quotidiana.",
+  "sinossi": "Un diario pensato per aiutare il lettore a gestire ansia e stress attraverso esercizi guidati, riflessioni quotidiane e strumenti di consapevolezza. Il percorso è strutturato per favorire calma mentale, riduzione dei pensieri ricorrenti e maggiore equilibrio emotivo nella vita di tutti i giorni.",
+  "amazon": "https://www.amazon.it/Diario-Anti-Ansia-calmare-ritrovare-serenit%C3%A0/dp/B0H38Y36ZW",
+  "cover": "images/diario-anti-ansia.jpg"
+},
+  {
+  "title": "DIARIO DELLA PRODUTTIVITÀ",
+  "category": [
+    "Crescita personale",
+    "Self-help",
+    "Diario"
+  ],
+  "description": "Un diario guidato per migliorare organizzazione personale, produttività e raggiungimento degli obiettivi.",
+  "sinossi": "Un diario strutturato per aiutare il lettore a pianificare le proprie giornate, migliorare la gestione del tempo e aumentare la produttività personale. Attraverso esercizi e strumenti di monitoraggio, supporta lo sviluppo di abitudini efficaci e una maggiore consapevolezza degli obiettivi quotidiani e a lungo termine.",
+  "amazon": "https://www.amazon.it/Diario-della-Produttivit%C3%A0-organizzare-raggiungere/dp/B0H2ZBFDS1",
+  "cover": "images/diario-della-produttivita.jpg"
+},
+  {
+  "title": "DIARIO DELL'AUTOSTIMA",
+  "category": [
+    "Crescita personale",
+    "Self-help",
+    "Diario"
+  ],
+  "description": "Un diario guidato per rafforzare l'autostima e migliorare il rapporto con se stessi.",
+  "sinossi": "Un percorso strutturato che aiuta il lettore a sviluppare una maggiore consapevolezza di sé e a rafforzare l’autostima. Attraverso esercizi quotidiani, riflessioni e strumenti pratici, il diario supporta la costruzione di un rapporto più sano e positivo con se stessi, favorendo fiducia personale e crescita emotiva.",
+  "amazon": "https://www.amazon.it/Diario-dellAutostima-rafforzare-migliorare-rapporto/dp/B0H2ZB8FP2",
+  "cover": "images/diario-dell-autostima.jpg"
+},
+  {
+  "title": "DIARIO DELLA GRATITUDINE",
+  "category": [
+    "Crescita personale",
+    "Self-help",
+    "Diario"
+  ],
+  "description": "Un diario guidato per sviluppare la gratitudine e migliorare il benessere quotidiano.",
+  "sinossi": "Un diario strutturato che guida il lettore nella pratica quotidiana della gratitudine attraverso esercizi semplici e riflessioni guidate. L’obiettivo è aiutare a focalizzarsi sugli aspetti positivi della vita, migliorare il benessere mentale e sviluppare una maggiore consapevolezza emotiva e personale.",
+  "amazon": "https://www.amazon.it/Diario-della-Gratitudine-minuti-migliorare/dp/B0H29V9PZQ",
+  "cover": "images/diario-della-gratitudine.jpg"
+},
+  {
+  "title": "LA CENA AZIENDALE",
+  "category": [
+    "Thriller",
+    "Suspense"
+  ],
+  "description": "Un thriller ambientato durante una cena aziendale che si trasforma in una situazione carica di tensione e suspense.",
+  "sinossi": "Una cena aziendale apparentemente ordinaria diventa il centro di una crescente tensione psicologica. Tra dinamiche ambigue e un’atmosfera sempre più inquietante, la storia si sviluppa come un thriller in cui ogni dettaglio può nascondere qualcosa di più pericoloso di quanto sembri.",
+  "amazon": "https://www.amazon.it/CENA-AZIENDALE-Nicola-Fiore-ebook/dp/B0FXGX74K6",
+  "cover": "images/cena-aziendale.jpg"
+},
+  {
+  "title": "GIOVINAZZO Through My Eyes - Full Color Edition",
+  "category": ["Storia", "Fotografia", "Emozione"],
+  "description": "The English edition of \"GIOVINAZZO coi miei occhi\", created for all those who have left Giovinazzo but continue to carry it forever in their hearts. A journey through history, memories, art and traditions to discover one of the most beautiful gems of the Apulian Adriatic coast.",
+  "sinossi": "GIOVINAZZO Through My Eyes is not simply a book about the history of a town. It is a journey through centuries of memory, art, faith, traditions and everyday life, told through the personal perspective of Nicola Fiore. From its ancient origins to its contemporary transformations, the book reveals the soul of Giovinazzo through the Concattedrale di Santa Maria Assunta, the devotion to the Madonna di Corsignano, the harbour, the historic centre, traditional crafts, local cuisine, works of art and stories passed down through generations. Enriched with a rich collection of colour photographs, personal stories, poems dedicated to the city and reflections, this book becomes a heartfelt declaration of love for Giovinazzo, created for those who live there, for those who left but never forgot it, and for those who wish to discover its most authentic soul.",
+  "amazon": "",
+  "cover": "images/GIOVINAZZOthroughmyeyes.jpeg",
+  "prossimamente": true
+},
+  {
+  "title": "GIOVINAZZO Through My Eyes - Black & White Edition",
+  "category": ["Storia", "Fotografia", "Emozione"],
+  "description": "The English black-and-white edition of \"GIOVINAZZO coi miei occhi\", presented in a refined monochrome format. A journey through memories, traditions, art and emotions dedicated to everyone who carries Giovinazzo forever in their heart.",
+  "sinossi": "GIOVINAZZO Through My Eyes - Full Black & White Edition is the English edition of \"GIOVINAZZO coi miei occhi\", presented in an elegant black-and-white format. The book tells the story of Giovinazzo through centuries of memory, art, faith, traditions and everyday life, offering readers a personal journey through the identity of the city. Nicola Fiore guides readers through the ancient origins and transformations of Giovinazzo, revealing its soul through the Concattedrale di Santa Maria Assunta, the devotion to the Madonna di Corsignano, the harbour, the historic centre, local traditions, crafts, cuisine and stories handed down through generations. Enriched with an extensive collection of black-and-white photographs, personal stories, poems and reflections, this edition becomes more than a historical account: it is a heartfelt declaration of love for Giovinazzo and for all those who continue to carry this city within them.",
+  "amazon": "",
+  "cover": "images/GIOVINAZZOthroughmyeyes.jpeg",
+  "prossimamente": true
+}
+
+  
+]
