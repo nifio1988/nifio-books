@@ -1,0 +1,127 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0b0b0f;
+  color: white;
+}
+
+/* HERO CON IMMAGINE (FORZATA) */
+.hero {
+  height: 50vh;
+  background-image: url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-box {
+  background: rgba(0,0,0,0.6);
+  padding: 25px 30px;
+  border-radius: 12px;
+}
+
+.hero h1 {
+  font-size: 52px;
+  margin: 0;
+}
+
+.hero p {
+  opacity: 0.8;
+}
+
+/* CONTAINER */
+.container {
+  padding: 20px;
+  text-align: center;
+}
+
+/* SEARCH */
+#search {
+  width: 60%;
+  max-width: 500px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+/* GRID */
+#grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 15px;
+}
+
+@media (max-width: 600px) {
+  .modal {
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  #overlay {
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  padding: 5px 10px;
+}
+
+.card {
+  background: #1a1a22;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.card h3 {
+  margin: 8px 0 0 0;
+  font-size: 14px;
+}
+
+.card small {
+  opacity: 0.6;
+}
+
+#categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+}
+
+.cat-btn {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: #1a1a22;
+  color: white;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.cat-btn:hover {
+  background: #ff9900;
+  color: black;
+}
+
+.cat-btn.active {
+  background: #ff9900;
+  color: black;
+}
