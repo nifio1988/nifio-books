@@ -429,18 +429,18 @@
   "category": ["Storia", "Fotografia", "Emozione"],
   "description": "The English edition of \"GIOVINAZZO coi miei occhi\", created for all those who have left Giovinazzo but continue to carry it forever in their hearts. A journey through history, memories, art and traditions to discover one of the most beautiful gems of the Apulian Adriatic coast.",
   "sinossi": "GIOVINAZZO Through My Eyes is not simply a book about the history of a town. It is a journey through centuries of memory, art, faith, traditions and everyday life, told through the personal perspective of Nicola Fiore. From its ancient origins to its contemporary transformations, the book reveals the soul of Giovinazzo through the Concattedrale di Santa Maria Assunta, the devotion to the Madonna di Corsignano, the harbour, the historic centre, traditional crafts, local cuisine, works of art and stories passed down through generations. Enriched with a rich collection of colour photographs, personal stories, poems dedicated to the city and reflections, this book becomes a heartfelt declaration of love for Giovinazzo, created for those who live there, for those who left but never forgot it, and for those who wish to discover its most authentic soul.",
-  "amazon": "",
+  "amazon": "https://www.amazon.it/GIOVINAZZO-through-eyes-Full-Color/dp/B0H843HDP1",
   "cover": "images/GIOVINAZZOthroughmyeyes.jpeg",
-  "prossimamente": true
+  "prossimamente": false
 },
   {
   "title": "GIOVINAZZO Through My Eyes - Black & White Edition",
   "category": ["Storia", "Fotografia", "Emozione"],
   "description": "The English black-and-white edition of \"GIOVINAZZO coi miei occhi\", presented in a refined monochrome format. A journey through memories, traditions, art and emotions dedicated to everyone who carries Giovinazzo forever in their heart.",
   "sinossi": "GIOVINAZZO Through My Eyes - Full Black & White Edition is the English edition of \"GIOVINAZZO coi miei occhi\", presented in an elegant black-and-white format. The book tells the story of Giovinazzo through centuries of memory, art, faith, traditions and everyday life, offering readers a personal journey through the identity of the city. Nicola Fiore guides readers through the ancient origins and transformations of Giovinazzo, revealing its soul through the Concattedrale di Santa Maria Assunta, the devotion to the Madonna di Corsignano, the harbour, the historic centre, local traditions, crafts, cuisine and stories handed down through generations. Enriched with an extensive collection of black-and-white photographs, personal stories, poems and reflections, this edition becomes more than a historical account: it is a heartfelt declaration of love for Giovinazzo and for all those who continue to carry this city within them.",
-  "amazon": "",
+  "amazon": "https://www.amazon.it/GIOVINAZZO-through-eyes-Black-White/dp/B0H8437CYP",
   "cover": "images/GIOVINAZZOthroughmyeyes.jpeg",
-  "prossimamente": true
+  "prossimamente": false
 }
 
   
