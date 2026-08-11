@@ -1543,6 +1543,115 @@ section[id] {
   transform: translateY(0);
 }
 
+/* ---------- onda nifio easter egg ---------- */
+
+.hero-trigger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 4px 10px;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.logo,
+.hero-trigger {
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.logo:hover,
+.logo:focus-visible,
+.hero-trigger:hover,
+.hero-trigger:focus-visible {
+  filter: drop-shadow(0 0 10px var(--accent-soft));
+  transform: translateY(-1px);
+}
+
+.logo:active,
+.hero-trigger:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* Instant (non-animated) glow used as the reduced-motion feedback — must
+   not rely on `animation`/`transition`, both of which the reduced-motion
+   block below forces to ~0 duration site-wide. */
+.nifio-pulse {
+  filter: drop-shadow(0 0 12px var(--accent));
+}
+
+#pageWrap.is-waving {
+  filter: url(#nifioWaveFilter);
+  animation: nifioPageTilt 3s ease-in-out;
+  transform-origin: center top;
+  will-change: filter, transform;
+}
+
+@keyframes nifioPageTilt {
+  0% {
+    transform: perspective(1400px) rotateX(0deg) translateY(0);
+  }
+  20% {
+    transform: perspective(1400px) rotateX(-1.1deg) translateY(-3px);
+  }
+  50% {
+    transform: perspective(1400px) rotateX(0.8deg) translateY(2px);
+  }
+  75% {
+    transform: perspective(1400px) rotateX(-0.5deg) translateY(-1px);
+  }
+  100% {
+    transform: perspective(1400px) rotateX(0deg) translateY(0);
+  }
+}
+
+#nifioWaveBand {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -60vh;
+  height: 60vh;
+  z-index: 900;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 157, 46, 0.06) 25%,
+    rgba(245, 244, 242, 0.16) 48%,
+    rgba(255, 157, 46, 0.1) 68%,
+    transparent 100%
+  );
+  filter: blur(3px);
+}
+
+#nifioWaveBand.is-active {
+  animation: nifioWaveBandSweep 3s ease-in-out;
+}
+
+@keyframes nifioWaveBandSweep {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  23% {
+    opacity: 1;
+  }
+  73% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateY(-160vh);
+    opacity: 0;
+  }
+}
+
 /* ---------- reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {
