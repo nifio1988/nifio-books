@@ -4,6 +4,14 @@
 
 const RELEASE_TARGET = new Date("2026-07-24T00:00:00").getTime();
 
+const WHATSAPP_NUMBER = "393490077537";
+const WHATSAPP_MESSAGE = "Ciao Nicola, ho visitato NIFIO BOOKS e vorrei avere maggiori informazioni sui tuoi libri.";
+const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
+document.querySelectorAll(".js-whatsapp-link").forEach((el) => {
+  el.href = WHATSAPP_HREF;
+});
+
 const collections = [
   {
     name: "COLLANA DI MERDA",
@@ -132,6 +140,11 @@ function initOverlays() {
     if (e.key === "Escape") closeAllOverlays();
   });
 }
+
+// Shared with auth.js (loaded as a separate module) so login/profile
+// modals reuse the same scroll-lock/ESC/outside-click behavior instead
+// of duplicating it.
+window.NifioOverlay = { open: openOverlay, close: closeOverlay };
 
 /* ---------------- libreria: fetch, render, filter ---------------- */
 
@@ -387,16 +400,17 @@ window.addEventListener("load", () => {
   openOverlay(releaseOverlay);
 });
 
-/* ---------------- animazione NIFIO ---------------- */
+/* ---------------- gioco NIFIO ---------------- */
 
 const animOverlay = document.getElementById("animOverlay");
+const animFrame = document.querySelector(".animation-frame");
 const animCanvas = document.getElementById("animCanvas");
 const animCtx = animCanvas.getContext("2d");
-
-let animFrameId = null;
-let animResizeHandler = null;
-let blocks = [];
-const ball = { x: 0, y: 0, vx: 6, vy: 5, r: 8 };
+const gameScoreEl = document.getElementById("gameScore");
+const gameEndOverlay = document.getElementById("gameEndOverlay");
+const gameEndTitle = document.getElementById("gameEndTitle");
+const gameEndScore = document.getElementById("gameEndScore");
+const gameRestartBtn = document.getElementById("gameRestartBtn");
 
 const LETTER_PATTERNS = {
   N: ["10001", "11001", "10101", "10011", "10001"],
@@ -405,15 +419,32 @@ const LETTER_PATTERNS = {
   O: ["01110", "10001", "10001", "10001", "01110"]
 };
 
+let logicalWidth = 0;
+let logicalHeight = 0;
+let blocks = [];
+let score = 0;
+let gameState = "playing"; // "playing" | "over" | "win"
+let animFrameId = null;
+
+let animResizeHandler = null;
+let pointerMoveHandler = null;
+let touchMoveHandler = null;
+let keyDownHandler = null;
+let keyUpHandler = null;
+const keyState = { left: false, right: false };
+
+const ball = { x: 0, y: 0, vx: 0, vy: 0, r: 8 };
+const paddle = { x: 0, y: 0, width: 90, height: 12 };
+
 function buildBlocks() {
   blocks = [];
 
   const letters = ["N", "I", "F", "I", "O"];
-  const size = Math.max(4, Math.min(8, animCanvas.width / 90));
+  const size = Math.max(4, Math.min(9, logicalWidth / 90));
   const letterWidth = size * 6;
   const totalWidth = letterWidth * letters.length;
-  const startX = animCanvas.width / 2 - totalWidth / 2;
-  const startY = animCanvas.height / 2 - (size * 5) / 2;
+  const startX = logicalWidth / 2 - totalWidth / 2;
+  const startY = logicalHeight * 0.14;
 
   letters.forEach((letter, li) => {
     LETTER_PATTERNS[letter].forEach((row, y) => {
@@ -431,51 +462,151 @@ function buildBlocks() {
   });
 }
 
+function resetPaddle() {
+  paddle.width = Math.max(70, logicalWidth * 0.2);
+  paddle.height = 12;
+  paddle.x = logicalWidth / 2 - paddle.width / 2;
+  paddle.y = logicalHeight - 28;
+}
+
 function resetBall() {
-  ball.x = animCanvas.width * 0.25;
-  ball.y = animCanvas.height * 0.25;
-  ball.vx = Math.max(4, animCanvas.width / 90);
-  ball.vy = Math.max(4, animCanvas.height / 110);
-  ball.r = Math.max(6, animCanvas.width / 90);
+  const speed = Math.max(4.5, logicalWidth / 85);
+  ball.r = Math.max(7, logicalWidth / 95);
+  ball.x = logicalWidth / 2;
+  ball.y = logicalHeight * 0.55;
+  ball.vx = speed * (Math.random() > 0.5 ? 1 : -1);
+  ball.vy = speed;
 }
 
-function resizeAnimCanvas() {
-  const frame = animCanvas.parentElement;
-  animCanvas.width = frame.clientWidth;
-  animCanvas.height = frame.clientHeight;
+function updateScore() {
+  gameScoreEl.textContent = `Punteggio: ${score}`;
+}
+
+function resetGame() {
+  score = 0;
+  gameState = "playing";
+  gameEndOverlay.classList.add("is-hidden");
+  updateScore();
   buildBlocks();
-  ball.x = Math.min(ball.x, animCanvas.width - ball.r);
-  ball.y = Math.min(ball.y, animCanvas.height - ball.r);
+  resetPaddle();
+  resetBall();
 }
 
-function stepBall() {
+function resizeCanvas() {
+  const dpr = window.devicePixelRatio || 1;
+  const rect = animFrame.getBoundingClientRect();
+  logicalWidth = rect.width;
+  logicalHeight = rect.height;
+
+  animCanvas.width = Math.round(logicalWidth * dpr);
+  animCanvas.height = Math.round(logicalHeight * dpr);
+  animCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+function movePaddleTo(clientX) {
+  const rect = animFrame.getBoundingClientRect();
+  const x = clientX - rect.left;
+  paddle.x = Math.min(Math.max(x - paddle.width / 2, 0), logicalWidth - paddle.width);
+}
+
+function circleRectCollision(circle, rect) {
+  const closestX = Math.max(rect.x, Math.min(circle.x, rect.x + rect.size));
+  const closestY = Math.max(rect.y, Math.min(circle.y, rect.y + rect.size));
+  const dx = circle.x - closestX;
+  const dy = circle.y - closestY;
+  return dx * dx + dy * dy < circle.r * circle.r;
+}
+
+function circlePaddleCollision() {
+  const closestX = Math.max(paddle.x, Math.min(ball.x, paddle.x + paddle.width));
+  const closestY = Math.max(paddle.y, Math.min(ball.y, paddle.y + paddle.height));
+  const dx = ball.x - closestX;
+  const dy = ball.y - closestY;
+  return dx * dx + dy * dy < ball.r * ball.r;
+}
+
+function endGame(won) {
+  gameState = won ? "win" : "over";
+  gameEndTitle.textContent = won ? "Hai vinto!" : "Game Over";
+  gameEndScore.textContent = `Punteggio finale: ${score}`;
+  gameEndOverlay.classList.remove("is-hidden");
+  gameRestartBtn.focus({ preventScroll: true });
+}
+
+function stepGame() {
+  if (keyState.left) paddle.x -= 7;
+  if (keyState.right) paddle.x += 7;
+  paddle.x = Math.min(Math.max(paddle.x, 0), logicalWidth - paddle.width);
+
   ball.x += ball.vx;
   ball.y += ball.vy;
 
-  if (ball.x - ball.r < 0 || ball.x + ball.r > animCanvas.width) ball.vx *= -1;
-  if (ball.y - ball.r < 0 || ball.y + ball.r > animCanvas.height) ball.vy *= -1;
+  if (ball.x - ball.r < 0) {
+    ball.x = ball.r;
+    ball.vx *= -1;
+  } else if (ball.x + ball.r > logicalWidth) {
+    ball.x = logicalWidth - ball.r;
+    ball.vx *= -1;
+  }
+
+  if (ball.y - ball.r < 0) {
+    ball.y = ball.r;
+    ball.vy *= -1;
+  }
+
+  if (ball.y + ball.r > logicalHeight) {
+    endGame(false);
+    return;
+  }
+
+  if (ball.vy > 0 && circlePaddleCollision()) {
+    ball.y = paddle.y - ball.r;
+    const hitPos = (ball.x - (paddle.x + paddle.width / 2)) / (paddle.width / 2);
+    const speed = Math.max(Math.abs(ball.vy), Math.abs(ball.vx));
+    ball.vx = hitPos * speed;
+    ball.vy = -Math.abs(ball.vy);
+  }
 
   blocks.forEach((b) => {
     if (b.hit) return;
-    const dx = ball.x - (b.x + b.size / 2);
-    const dy = ball.y - (b.y + b.size / 2);
-    const dist = Math.sqrt(dx * dx + dy * dy);
-
-    if (dist < ball.r + b.size / 2) {
+    if (circleRectCollision(ball, b)) {
       b.hit = true;
-      ball.vx *= -1;
-      ball.vy *= -1;
+      score += 10;
+      updateScore();
+
+      const overlapX = Math.min(ball.x + ball.r - b.x, b.x + b.size - (ball.x - ball.r));
+      const overlapY = Math.min(ball.y + ball.r - b.y, b.y + b.size - (ball.y - ball.r));
+      if (overlapX < overlapY) {
+        ball.vx *= -1;
+      } else {
+        ball.vy *= -1;
+      }
     }
   });
+
+  if (blocks.length > 0 && blocks.every((b) => b.hit)) {
+    endGame(true);
+  }
 }
 
 function drawScene() {
-  animCtx.clearRect(0, 0, animCanvas.width, animCanvas.height);
+  animCtx.clearRect(0, 0, logicalWidth, logicalHeight);
 
   blocks.forEach((b) => {
     animCtx.fillStyle = b.hit ? "#ff9d2e" : "#f5f4f2";
     animCtx.fillRect(b.x, b.y, b.size, b.size);
   });
+
+  const r = 6;
+  animCtx.beginPath();
+  animCtx.moveTo(paddle.x + r, paddle.y);
+  animCtx.arcTo(paddle.x + paddle.width, paddle.y, paddle.x + paddle.width, paddle.y + paddle.height, r);
+  animCtx.arcTo(paddle.x + paddle.width, paddle.y + paddle.height, paddle.x, paddle.y + paddle.height, r);
+  animCtx.arcTo(paddle.x, paddle.y + paddle.height, paddle.x, paddle.y, r);
+  animCtx.arcTo(paddle.x, paddle.y, paddle.x + paddle.width, paddle.y, r);
+  animCtx.closePath();
+  animCtx.fillStyle = "#ff9d2e";
+  animCtx.fill();
 
   animCtx.beginPath();
   animCtx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
@@ -487,36 +618,90 @@ function drawScene() {
 }
 
 function animLoop() {
-  stepBall();
+  if (gameState === "playing") {
+    stepGame();
+  }
   drawScene();
-  animFrameId = requestAnimationFrame(animLoop);
+  if (gameState === "playing") {
+    animFrameId = requestAnimationFrame(animLoop);
+  }
 }
 
-function startAnimation() {
-  resizeAnimCanvas();
-  resetBall();
-  cancelAnimationFrame(animFrameId);
+function startGame() {
+  resizeCanvas();
+  resetGame();
+  if (animFrameId) cancelAnimationFrame(animFrameId);
   animLoop();
 
-  animResizeHandler = () => resizeAnimCanvas();
+  animResizeHandler = () => {
+    resizeCanvas();
+    resetGame();
+  };
   window.addEventListener("resize", animResizeHandler);
+
+  pointerMoveHandler = (e) => movePaddleTo(e.clientX);
+  animFrame.addEventListener("mousemove", pointerMoveHandler);
+
+  touchMoveHandler = (e) => {
+    if (e.touches[0]) movePaddleTo(e.touches[0].clientX);
+    e.preventDefault();
+  };
+  animFrame.addEventListener("touchstart", touchMoveHandler, { passive: false });
+  animFrame.addEventListener("touchmove", touchMoveHandler, { passive: false });
+
+  keyDownHandler = (e) => {
+    if (e.key === "ArrowLeft") keyState.left = true;
+    if (e.key === "ArrowRight") keyState.right = true;
+  };
+  keyUpHandler = (e) => {
+    if (e.key === "ArrowLeft") keyState.left = false;
+    if (e.key === "ArrowRight") keyState.right = false;
+  };
+  document.addEventListener("keydown", keyDownHandler);
+  document.addEventListener("keyup", keyUpHandler);
 }
 
-function stopAnimation() {
-  cancelAnimationFrame(animFrameId);
+function stopGame() {
+  if (animFrameId) cancelAnimationFrame(animFrameId);
   animFrameId = null;
+
   if (animResizeHandler) {
     window.removeEventListener("resize", animResizeHandler);
     animResizeHandler = null;
   }
+  if (pointerMoveHandler) {
+    animFrame.removeEventListener("mousemove", pointerMoveHandler);
+    pointerMoveHandler = null;
+  }
+  if (touchMoveHandler) {
+    animFrame.removeEventListener("touchstart", touchMoveHandler);
+    animFrame.removeEventListener("touchmove", touchMoveHandler);
+    touchMoveHandler = null;
+  }
+  if (keyDownHandler) {
+    document.removeEventListener("keydown", keyDownHandler);
+    keyDownHandler = null;
+  }
+  if (keyUpHandler) {
+    document.removeEventListener("keyup", keyUpHandler);
+    keyUpHandler = null;
+  }
+  keyState.left = false;
+  keyState.right = false;
 }
+
+gameRestartBtn.addEventListener("click", () => {
+  resetGame();
+  if (animFrameId) cancelAnimationFrame(animFrameId);
+  animLoop();
+});
 
 document.querySelectorAll(".js-open-anim").forEach((btn) => {
   btn.addEventListener("click", () => openOverlay(animOverlay, btn));
 });
 
-animOverlay.addEventListener("overlay:open", startAnimation);
-animOverlay.addEventListener("overlay:close", stopAnimation);
+animOverlay.addEventListener("overlay:open", startGame);
+animOverlay.addEventListener("overlay:close", stopGame);
 
 /* ---------------- header & mobile nav ---------------- */
 
