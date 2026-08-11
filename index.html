@@ -3,1065 +3,271 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NIFIO BOOKS</title>
-  <!-- rebuild -->
-  <!-- pages refresh -->
-  
-  <!-- redeploy  -->
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #0b0b0f;
-  color: white;
-}
-
-
-/* HERO */
-.hero {
-  height: 50vh;
-  background: url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f") center/cover no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.hero-box {
-  background: rgba(0,0,0,0.6);
-  padding: 25px;
-  border-radius: 12px;
-}
-
-.hero h1 {
-  margin: 0;
-  font-size: 50px;
-}
-
-/* SEARCH */
-#search {
-  width: 60%;
-  max-width: 500px;
-  display: block;
-  margin: 20px auto;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-}
-
-  /* CATEGORIE */
-
-#categories{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:10px;
-    padding:10px 20px 20px;
-}
-
-.cat-btn{
-    background:#1a1a22;
-    color:white;
-    border:none;
-    padding:10px 18px;
-    border-radius:25px;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.cat-btn:hover{
-    background:#2d2d3d;
-}
-
-.cat-btn.active{
-    background:#ff9900;
-    color:black;
-    font-weight:bold;
-}
-
-  #collections {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 15px;
-  padding: 20px;
-}
-
-.collection {
-  background: #15151c;
-  border-radius: 12px;
-  padding: 15px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.collection:hover {
-  transform: scale(1.02);
-}
-
-.collection img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.collection h3 {
-  margin: 0 0 8px;
-}
-
-.collection p {
-  font-size: 13px;
-  opacity: 0.8;
-}
-
-/* GRID */
-#grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 15px;
-  padding: 20px;
-}
-
-.card {
-  background: #1a1a22;
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-.card img {
-  width: 100%;
-  display: block;
-}
-
-.card h3 {
-  margin: 8px;
-  font-size: 14px;
-}
-
-.card small {
-  margin: 0 8px 8px;
-  display: block;
-  opacity: 0.6;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin: 0 8px 8px;
-}
-
-.tag {
-  background: #2a2a35;
-  color: white;
-  font-size: 11px;
-  padding: 4px 8px;
-  border-radius: 12px;
-}
-
-/* MODAL */
-#overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(10px);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: 20px;
-}
-
-.modal {
-  background: #1a1a22;
-  width: 360px;
-  max-width: 95%;
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  position: relative;
-
-  max-height: 90vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.modal img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.modal h2 {
-  margin: 10px 0 5px;
-}
-
-.modal p {
-  font-size: 13px;
-  opacity: 0.85;
-  margin: 5px 0;
-}
-
-/* BUTTON */
-.btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 15px;
-  background: #ff9900;
-  color: black;
-  font-weight: bold;
-  border-radius: 8px;
-  text-decoration: none;
-}
-
-/* CLOSE */
-.close {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-#authorBtn {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  z-index: 10000;
-  background: rgba(0,0,0,0.6);
-  padding: 10px 14px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  backdrop-filter: blur(8px);
-}
-
-#authorBtn:hover {
-  background: rgba(255,255,255,0.1);
-}
-
-  #animBtn {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  z-index: 10000;
-  background: rgba(0,0,0,0.7);
-  color: white;
-  padding: 10px 14px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-#animOverlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  z-index: 99999;
-  justify-content: center;
-  align-items: center;
-}
-
-#animBox {
-  position: relative;
-  width: 90vw;
-  height: 80vh;
-  background: #111;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-#closeAnim {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  cursor: pointer;
-  color: white;
-  z-index: 2;
-  font-size: 18px;
-}
-
-canvas {
-  width: 100%;
-  height: 100%;
-}
-  #releaseOverlay {
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.85);
-  z-index:99999;
-  justify-content:center;
-  align-items:center;
-}
-
-
-#releaseModal {
-
-  position:relative;
-  background:#1a1a22;
-  color:white;
-  width:90%;
-  max-width:500px;
-  padding:25px;
-  border-radius:15px;
-  text-align:center;
-
-}
-
-
-#releaseModal img {
-
-  width:220px;
-  max-width:80%;
-  border-radius:10px;
-
-}
-
-
-#closeRelease {
-
-  position:absolute;
-  top:10px;
-  right:15px;
-  cursor:pointer;
-  font-size:20px;
-
-}
-
-
-#releaseModal h2 {
-
-  margin-top:15px;
-
-}
-
-
-#releaseModal p {
-
-  font-size:15px;
-  line-height:1.5;
-  opacity:0.9;
-
-}
-
-  #countdown {
-
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  margin-top:25px;
-
-}
-
-
-#countdown div {
-
-  background:#111;
-  padding:10px;
-  border-radius:10px;
-  min-width:65px;
-
-}
-
-
-#countdown span {
-
-  display:block;
-  font-size:25px;
-  font-weight:bold;
-  color:white;
-
-}
-
-
-#countdown small {
-
-  font-size:12px;
-  opacity:0.7;
-
-}
-
-.comingBanner {
-
-  background:#e63946;
-  color:white;
-  padding:8px 18px;
-  border-radius:20px;
-  font-weight:bold;
-  font-size:14px;
-  margin:10px auto;
-  display:inline-block;
-
-}
-</style>
-
+<title>NIFIO BOOKS — Nicola Fiore</title>
+<meta name="description" content="Il sito ufficiale di Nicola Fiore (NIFIO), scrittore indipendente. Thriller, satira sul lavoro, crescita personale e libri illustrati.">
+<meta name="theme-color" content="#0b0b0e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230b0b0e'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Georgia,serif' font-weight='700' fill='%23ff9d2e' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div id="animBtn" onclick="openAnim()">🎬 Animazione</div>
+<header id="siteHeader" class="site-header">
+  <div class="container header-inner">
+    <a href="#top" class="logo">
+      <span class="logo-mark">NIFIO</span>
+      <span class="logo-sub">NICOLA FIORE</span>
+    </a>
 
-<div id="authorBtn" onclick="openAuthor()">
-  📖 Chi è Nicola Fiore?
-</div>
+    <nav class="nav-desktop" aria-label="Navigazione principale">
+      <a class="nav-link" href="#collane">Collane</a>
+      <a class="nav-link" href="#libreria">Libreria</a>
+      <button class="nav-link js-open-author" type="button">Chi è Nicola Fiore?</button>
+      <button class="nav-link js-open-anim" type="button">🎬 Animazione</button>
+    </nav>
 
-  
-
-<div class="hero">
-  <div class="hero-box">
-    <h1>NIFIO BOOKS</h1>
-    <p>La biblioteca ufficiale di Nicola Fiore</p>
-  </div>
-</div>
-
-<input id="search" placeholder="Cerca un libro...">
-
-<div id="categories"></div>
-
-<div id="collections"></div>
-
-<div id="grid"></div>
-
-<!-- MODAL -->
-<div id="overlay">
-  <div class="modal">
-    <div class="close" onclick="closeModal()">✖</div>
-
-    <img id="mCover">
-    
-    <div id="mComing" class="comingBanner" style="display:none;">
-      PROSSIMAMENTE
-    </div>
-    
-    <h2 id="mTitle"></h2>
-    <p id="mDesc"></p>
-    <p id="mSinossi"></p>
-
-    <a id="mLink" class="btn" target="_blank">Apri su Amazon</a>
-  </div>
-</div>
-
-  <!-- MODAL LIBRI IN USCITA -->
-
-<div id="releaseOverlay">
-
-  <div id="releaseModal">
-
-    <div id="closeRelease">✖</div>
-
-    <img id="releaseCover" src="images/GIOVINAZZOthroughmyeyes.jpeg">
-
-    <h2>Libri in evidenza</h2>
-
-    <h3 id="releaseTitle">
-      GIOVINAZZO through my eyes - ENGLISH EDITION
-    </h3>
-
-    <p id="releaseDescription">
-      GIOVINAZZO through my eyes è la versione in inglese del libro "GIOVINAZZO coi miei occhi". 
-      Già disponibile su Amazon e su tutti i marketplace sia in B/N che nella Full Color Edition.
-    </p>
-    <div id="countdown">
-
-  <div>
-    <span id="days">00</span>
-    <small>Giorni</small>
+    <button id="hamburger" class="hamburger" type="button" aria-expanded="false" aria-controls="navMobile" aria-label="Apri il menu di navigazione">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 
-  <div>
-    <span id="hours">00</span>
-    <small>Ore</small>
-  </div>
+  <nav id="navMobile" class="nav-mobile" aria-label="Navigazione mobile">
+    <a class="nav-link" href="#collane">Collane</a>
+    <a class="nav-link" href="#libreria">Libreria</a>
+    <button class="nav-link js-open-author" type="button">Chi è Nicola Fiore?</button>
+    <button class="nav-link js-open-anim" type="button">🎬 Animazione</button>
+  </nav>
+</header>
 
-  <div>
-    <span id="minutes">00</span>
-    <small>Minuti</small>
-  </div>
+<main id="top">
 
-  <div>
-    <span id="seconds">00</span>
-    <small>Secondi</small>
-  </div>
-
-</div>
-
-  </div>
-
-</div>
-
-<div id="animOverlay">
-  <div id="animBox">
-    <div id="closeAnim" onclick="closeAnim()">✖</div>
-    <canvas id="animCanvas"></canvas>
-  </div>
-</div>
-
-<div id="authorOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:99999;justify-content:center;align-items:center;">
-
-  <div style="background:#1a1a22;padding:20px;border-radius:12px;max-width:500px;width:90%;text-align:center;position:relative;">
-
-    <div onclick="closeAuthor()" style="position:absolute;top:10px;right:12px;cursor:pointer;">✖</div>
-
-    <!-- FOTO -->
-    <img src="images/nicola-fiore1.jpeg" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-top:10px;">
-
-    <h2>Nicola Fiore - NIFIO</h2>
-
-    <p style="font-size:14px;opacity:0.85;">
-      Scrittore indipendente. Creo libri che spaziano tra thriller, satira sul lavoro e crescita personale.
-      Le mie collane includono “Collana di Merda”, “Diari Self-Help” e thriller contemporanei.
-    </p>
-
-    <hr style="opacity:0.2">
-
-    <p>📸 Instagram:</p>
-    <a href="https://www.instagram.com/nifio_88?igsh=eXF3dWpqam5nejdw&utm_source=qr" target="_blank">nifio_88</a>
-
-    <p>📘 Facebook:</p>
-    <a href="https://www.facebook.com/nico.fiore1?locale=it_IT" target="_blank">Nicola Fiore</a>
-
-  </div>
-</div>
-
-  
-
-<script>
-let books = [];
-
-const grid = document.getElementById("grid");
-const search = document.getElementById("search");
-const overlay = document.getElementById("overlay");
-const categoriesDiv = document.getElementById("categories");
-
-  const collectionsDiv = document.getElementById("collections");
-
-const collections = [
-  {
-    name: "COLLANA DI MERDA",
-    description: "Una serie ironica sul mondo del lavoro e le sue dinamiche tossiche.",
-    image: "images/collana-merda.jfif",
-    books: [
-      "LAVORO DI MERDA",
-      "VITA DI MERDA: Manuale di resistenza quotidiana",
-      "SETTIMANA DI MERDA: Manuale della gestione della disperazione",
-      "CAPO DI MERDA: Manuale dell'Ammutinamento",
-      "FERIE DI MERDA: Manuale di Diritto alla Disconnessione",
-      "COLLEGA DI MERDA: Manuale Anti-Omicidio",
-      "NATALE DI MERDA: Manuale di Sopravvivenza all'Avvento",
-      "AZIENDA DI MERDA"
-    ]
-  },
-  {
-    name: "VISIONI FANTASTICHE",
-    description: "Libri da colorare per adulti su mondi fantastici e immaginari.",
-    image: "images/collana-fantastiche.jfif",
-    books: [
-      "AEROPLANI FANTASTICI E DOVE TROVARLI",
-      "ARCHITETTURE FANTASTICHE E DOVE TROVARLE",
-      "IMBARCAZIONI FANTASTICHE E DOVE TROVARLE",
-      "ROBOT FANTASTICI E DOVE TROVARLI"
-    ]
-  },
-  {
-    name: "EROI IN DIVISA",
-    description: "Storie dedicate alle forze armate e ai corpi dello Stato.",
-    image: "images/collana-eroi.jfif",
-    books: [
-      "VIRGO FIDELIS: La Storia dell'Arma dei Carabinieri",
-      "FUOCO E CORAGGIO: La Storia dei Vigili del Fuoco in Italia",
-      "VELOCITÀ E ONORE: La Storia dell’Aeronautica Militare Italiana"
-    ]
-  },
-  {
-  name: "DIARI SELF-HELP",
-  description: "Una serie di diari guidati per crescita personale, benessere emotivo e miglioramento delle abitudini quotidiane.",
-  image: "images/collana-diari-selfhelp.jfif",
-  books: [
-    "DIARIO DELLA MOTIVAZIONE",
-    "DIARIO DELLE EMOZIONI",
-    "DIARIO DELLE ABITUDINI",
-    "DIARIO DEL TEMPO",
-    "DIARIO DEL SONNO",
-    "DIARIO ANTI-ANSIA",
-    "DIARIO DELLA PRODUTTIVITÀ",
-    "DIARIO DELL'AUTOSTIMA",
-    "DIARIO DELLA GRATITUDINE"
-  ]
-}
-];
-
-function renderCollections() {
-  collectionsDiv.innerHTML = "";
-
-  collections.forEach(col => {
-    const div = document.createElement("div");
-    div.className = "collection";
-
-    div.innerHTML = `
-      <img src="${col.image}">
-      <h3>${col.name}</h3>
-      <p>${col.description}</p>
-    `;
-
-    div.onclick = () => openCollection(col);
-
-    collectionsDiv.appendChild(div);
-  });
-}
-
-function openCollection(col) {
-  let html = `
-    <div style="text-align:center">
-      <img src="${col.image}" style="width:100%;border-radius:10px;margin-bottom:10px;">
-      <h2>${col.name}</h2>
-      <p>${col.description}</p>
-      <hr>
-  `;
-
-  col.books.forEach(title => {
-    const book = books.find(b => b.title === title);
-    if (book) {
-      html += `
-        <a class="btn" style="display:block;margin:8px 0" href="${book.amazon}" target="_blank">
-          ${book.title}
-        </a>
-      `;
-    }
-  });
-
-  html += `</div>`;
-
-  document.getElementById("mCover").src = "";
-  document.getElementById("mTitle").innerHTML = html;
-  document.getElementById("mDesc").innerHTML = "";
-  document.getElementById("mSinossi").innerHTML = "";
-  document.getElementById("mLink").style.display = "none";
-
-  overlay.style.display = "flex";
-}
-
-let activeCategory = "Tutti";
-
-fetch("books.json")
-  .then(r => r.json())
-  .then(data => {
-    books = data;
-    render(books);
-    renderCollections();
-    buildCategories();
-  });
-
-search.addEventListener("input", () => {
-  applyFilters();
-});
-
-function render(list) {
-  grid.innerHTML = "";
-
-  list.forEach(b => {
-    const card = document.createElement("div");
-    card.className = "card";
-
-    card.innerHTML = `
-      <img src="${b.cover}">
-      <h3>${b.title}</h3>
-      <div class="tags">
-        ${b.category.map(c => `<span class="tag">${c}</span>`).join("")}
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Autore indipendente</p>
+      <h1>
+        <span class="hero-name">NICOLA FIORE</span>
+        <span class="hero-brand">NIFIO</span>
+      </h1>
+      <p class="hero-tagline">
+        Storie che spaziano tra thriller, satira sul lavoro e crescita personale — raccontate con voce diretta, ironica, autentica.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#libreria">Scopri i libri</a>
+        <button class="btn btn-ghost js-open-author" type="button">Chi è Nicola Fiore?</button>
       </div>
-    `;
-
-    card.onclick = () => openModal(b);
-
-    grid.appendChild(card);
-  });
-}
-
-function openModal(book) {
-
-  document.getElementById("mCover").src = book.cover;
-  document.getElementById("mTitle").innerText = book.title;
-  document.getElementById("mDesc").innerText = book.description || "";
-  document.getElementById("mSinossi").innerText = book.sinossi || "";
-
-  const banner = document.getElementById("mComing");
-
-  if (book.prossimamente === true) {
-    banner.style.display = "inline-block";
-  } else {
-    banner.style.display = "none";
-  }
-
-
-  const amazonBtn = document.getElementById("mLink");
-
-  if (book.amazon && book.amazon.trim() !== "") {
-
-    amazonBtn.style.display = "inline-block";
-    amazonBtn.href = book.amazon;
-
-  } else {
-
-    amazonBtn.style.display = "none";
-
-  }
-
-
-  overlay.style.display = "flex";
-
-  document.documentElement.style.overflow = "hidden";
-  document.body.style.overflow = "hidden";
-}
-
-function closeModal() {
-  overlay.style.display = "none";
-  document.documentElement.style.overflow = "";
-  document.body.style.overflow = "";
-}
-
-overlay.onclick = (e) => {
-  if (e.target === overlay) closeModal();
-};
-
-function buildCategories() {
-
-  const categories = [
-    "Tutti",
-    ...new Set(books.flatMap(b => b.category))
-  ];
-
-  categoriesDiv.innerHTML = "";
-
-  categories.forEach(category => {
-
-    const btn = document.createElement("button");
-    btn.className = "cat-btn";
-
-    if (category === activeCategory) {
-      btn.classList.add("active");
-    }
-
-    btn.textContent = category;
-
-    btn.onclick = () => {
-      activeCategory = category;
-      applyFilters();
-      buildCategories();
-    };
-
-    categoriesDiv.appendChild(btn);
-  });
-}
-
-function applyFilters() {
-
-  const text = search.value.toLowerCase();
-
-  let filtered = books;
-
-  if (activeCategory !== "Tutti") {
-
-    filtered = filtered.filter(book =>
-      book.category.includes(activeCategory)
-    );
-
-  }
-
-  filtered = filtered.filter(book =>
-    book.title.toLowerCase().includes(text) ||
-    book.category.some(c => c.toLowerCase().includes(text))
-  );
-
-  render(filtered);
-}
-
-function openAuthor() {
-  document.getElementById("authorOverlay").style.display = "flex";
-  document.body.style.overflow = "hidden";
-}
-
-function closeAuthor() {
-  document.getElementById("authorOverlay").style.display = "none";
-  document.body.style.overflow = "";
-}
-
-let animInterval;
-let ctx, canvas;
-let ball = {x: 100, y: 100, vx: 7, vy: 6, r: 8};
-
-let blocks = [];
-const text = "NIFIO";
-
-function openAnim() {
-  document.getElementById("animOverlay").style.display = "flex";
-  initCanvas();
-  startAnim();
-}
-
-function closeAnim() {
-  document.getElementById("animOverlay").style.display = "none";
-  cancelAnimationFrame(animInterval);
-}
-
-function initCanvas() {
-  canvas = document.getElementById("animCanvas");
-  ctx = canvas.getContext("2d");
-
-  canvas.width = canvas.clientWidth;
-  canvas.height = canvas.clientHeight;
-
-  createBlocks();
-}
-
-function createBlocks() {
-  blocks = [];
-
-  const pattern = {
-    N: [
-      "10001",
-      "11001",
-      "10101",
-      "10011",
-      "10001"
-    ],
-    I: [
-      "11111",
-      "00100",
-      "00100",
-      "00100",
-      "11111"
-    ],
-    F: [
-      "11111",
-      "10000",
-      "11110",
-      "10000",
-      "10000"
-    ],
-    O: [
-      "01110",
-      "10001",
-      "10001",
-      "10001",
-      "01110"
-    ]
-  };
-
-  const letters = ["N","I","F","I","O"];
-
-  const size = 6;
-  const startX = canvas.width / 2 - 140;
-  const startY = canvas.height / 2 - 60;
-
-  letters.forEach((letter, li) => {
-    const shape = pattern[letter];
-
-    shape.forEach((row, y) => {
-      row.split("").forEach((cell, x) => {
-        if (cell === "1") {
-          blocks.push({
-            x: startX + li * 60 + x * size,
-            y: startY + y * size,
-            hit: false
-          });
-        }
-      });
-    });
-  });
-}
-
-function drawBlocks() {
-  blocks.forEach(b => {
-    const dx = ball.x - (b.x + 3);
-    const dy = ball.y - (b.y + 3);
-    const dist = Math.sqrt(dx * dx + dy * dy);
-  
-    if (!b.hit && dist < ball.r + 3) {
-      b.hit = true;
-  
-      // rimbalzo vero sulla scritta
-      ball.vx *= -1;
-      ball.vy *= -1;
-    }
-  });
-}
-
-function drawBall() {
-  ctx.beginPath();
-  ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
-  ctx.fillStyle = b.hit ? "#ff4d00" : "#ffffff";
-  ctx.fill();
-}
-
-function update() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // movimento pallina
-  ball.x += ball.vx;
-  ball.y += ball.vy;
-
-  // rimbalzo sui bordi
-  if (ball.x - ball.r < 0 || ball.x + ball.r > canvas.width) ball.vx *= -1;
-  if (ball.y - ball.r < 0 || ball.y + ball.r > canvas.height) ball.vy *= -1;
-
-  // collisione con blocchi
-  blocks.forEach(b => {
-    if (!b.hit) {
-      const dx = ball.x - (b.x + 3);
-      const dy = ball.y - (b.y + 3);
-      const dist = Math.sqrt(dx * dx + dy * dy);
-
-      if (dist < ball.r + 3) {
-        b.hit = true;
-
-        // rimbalzo semplice ma stabile
-        ball.vx *= -1;
-        ball.vy *= -1;
-      }
-    }
-  });
-
-  // disegna blocchi
-  blocks.forEach(b => {
-    ctx.fillStyle = b.hit ? "#ff4d00" : "#ffffff";
-    ctx.fillRect(b.x, b.y, 4, 4);
-  });
-
-  // disegna pallina
-  ctx.beginPath();
-  ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
-  ctx.fillStyle = "red";
-  ctx.fill();
-
-  // loop ANIMAZIONE (FONDAMENTALE)
-  animInterval = requestAnimationFrame(update);
-}
-
-function startAnim() {
-  update();
-}
-
-  function openReleaseModal(){
-
-  document.getElementById("releaseOverlay").style.display="flex";
-  document.body.style.overflow="hidden";
-
-}
-
-
-function closeReleaseModal(){
-
-  document.getElementById("releaseOverlay").style.display="none";
-  document.body.style.overflow="";
-
-}
-
-
-// apertura automatica ogni caricamento pagina
-
-window.addEventListener("load",()=>{
-
-  openReleaseModal();
-
-});
-
-
-// chiusura con X
-
-document.getElementById("closeRelease").onclick = ()=>{
-
-  closeReleaseModal();
-
-};
-
-
-// chiusura cliccando fuori
-
-document.getElementById("releaseOverlay").onclick = (e)=>{
-
-  if(e.target.id==="releaseOverlay"){
-
-    closeReleaseModal();
-
-  }
-
-};
-
-  function updateCountdown(){
-
-  const target = new Date("2026-07-24T00:00:00").getTime();
-
-  const now = new Date().getTime();
-
-  const difference = target - now;
-
-
-  if(difference <= 0){
-
-    document.getElementById("days").innerHTML="00";
-    document.getElementById("hours").innerHTML="00";
-    document.getElementById("minutes").innerHTML="00";
-    document.getElementById("seconds").innerHTML="00";
-
-    return;
-
-  }
-
-
-  const days = Math.floor(
-    difference / (1000 * 60 * 60 * 24)
-  );
-
-
-  const hours = Math.floor(
-    (difference % (1000 * 60 * 60 * 24)) /
-    (1000 * 60 * 60)
-  );
-
-
-  const minutes = Math.floor(
-    (difference % (1000 * 60 * 60)) /
-    (1000 * 60)
-  );
-
-
-  const seconds = Math.floor(
-    (difference % (1000 * 60)) /
-    1000
-  );
-
-
-  document.getElementById("days").innerHTML =
-    String(days).padStart(2,"0");
-
-  document.getElementById("hours").innerHTML =
-    String(hours).padStart(2,"0");
-
-  document.getElementById("minutes").innerHTML =
-    String(minutes).padStart(2,"0");
-
-  document.getElementById("seconds").innerHTML =
-    String(seconds).padStart(2,"0");
-
-}
-
-
-setInterval(updateCountdown,1000);
-
-updateCountdown();
-</script>
-
+    </div>
+  </section>
+
+  <section id="collane" class="section section-alt">
+    <div class="container">
+      <div class="section-head centered reveal">
+        <p class="eyebrow">Collane editoriali</p>
+        <h2>Le collezioni NIFIO</h2>
+        <p>Quattro percorsi editoriali distinti, ognuno con una propria identità e un proprio pubblico.</p>
+      </div>
+
+      <div id="collectionsGrid" class="collections-grid reveal" aria-label="Collane editoriali"></div>
+    </div>
+  </section>
+
+  <section id="libreria" class="section">
+    <div class="container">
+      <div class="section-head centered">
+        <p class="eyebrow">Catalogo completo</p>
+        <h2>La libreria</h2>
+        <p>Cerca per titolo o categoria, oppure sfoglia l'intero catalogo.</p>
+      </div>
+
+      <div class="library-controls">
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <label for="search" class="visually-hidden">Cerca un libro per titolo o categoria</label>
+          <input id="search" type="search" placeholder="Cerca un libro per titolo o categoria...">
+        </div>
+
+        <div id="categories" role="group" aria-label="Filtra per categoria"></div>
+      </div>
+
+      <div id="grid" class="reveal" aria-label="Catalogo libri"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-mark">NIFIO</span>
+        <p class="footer-desc">Nicola Fiore è uno scrittore indipendente. Le sue collane spaziano tra satira sul lavoro, crescita personale, narrativa thriller e libri illustrati.</p>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-heading">Esplora</p>
+        <div class="footer-links">
+          <a href="#collane">Collane</a>
+          <a href="#libreria">Libreria</a>
+          <button type="button" class="js-open-author">Chi è Nicola Fiore?</button>
+          <button type="button" class="js-open-anim">Animazione</button>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-heading">Social</p>
+        <div class="social-row">
+          <a class="social-link" href="https://www.instagram.com/nifio_88?igsh=eXF3dWpqam5nejdw&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram di Nicola Fiore">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            Instagram
+          </a>
+          <a class="social-link" href="https://www.facebook.com/nico.fiore1?locale=it_IT" target="_blank" rel="noopener noreferrer" aria-label="Facebook di Nicola Fiore">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+            Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="footerYear"></span> Nicola Fiore — NIFIO. Tutti i diritti riservati.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL LIBRO -->
+<div id="bookOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="mTitle">
+  <div class="modal-shell modal-book">
+    <button class="modal-close" type="button" aria-label="Chiudi scheda libro">✕</button>
+    <div class="modal-book-grid">
+      <div class="modal-book-cover">
+        <img id="mCover" src="" alt="">
+      </div>
+      <div class="modal-book-content">
+        <div id="mTags" class="modal-tags"></div>
+        <span id="mComing" class="badge badge-coming is-hidden">Prossimamente</span>
+        <h2 id="mTitle" class="modal-title"></h2>
+        <p id="mDesc" class="modal-lead"></p>
+        <p id="mSinossiLabel" class="modal-caption">Sinossi</p>
+        <p id="mSinossi" class="modal-body-text"></p>
+        <div class="modal-actions">
+          <a id="mLink" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Apri su Amazon</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL COLLANA -->
+<div id="collectionOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="colName">
+  <div class="modal-shell modal-collection">
+    <button class="modal-close" type="button" aria-label="Chiudi scheda collana">✕</button>
+    <div class="modal-collection-grid">
+      <div class="modal-collection-media">
+        <img id="colMedia" src="" alt="">
+      </div>
+      <div class="modal-collection-content">
+        <p class="modal-caption">Collana</p>
+        <h2 id="colName" class="modal-title"></h2>
+        <p id="colDesc" class="modal-collection-desc"></p>
+        <ul id="colList" class="collection-book-list"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL AUTORE -->
+<div id="authorOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="authorName">
+  <div class="modal-shell modal-author">
+    <button class="modal-close" type="button" aria-label="Chiudi scheda autore">✕</button>
+    <div class="modal-author-content">
+      <img class="author-photo" src="images/nicola-fiore1.jpeg" alt="Fotografia di Nicola Fiore">
+      <h2 id="authorName" class="author-name">Nicola Fiore — NIFIO</h2>
+      <p class="author-role">Scrittore indipendente</p>
+      <p class="author-bio">Creo libri che spaziano tra thriller, satira sul lavoro e crescita personale. Ogni collana nasce da un'idea precisa e da una voce riconoscibile.</p>
+      <div id="authorCollections" class="author-collections"></div>
+      <hr class="author-divider">
+      <div class="social-row">
+        <a class="social-link" href="https://www.instagram.com/nifio_88?igsh=eXF3dWpqam5nejdw&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram di Nicola Fiore">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          Instagram
+        </a>
+        <a class="social-link" href="https://www.facebook.com/nico.fiore1?locale=it_IT" target="_blank" rel="noopener noreferrer" aria-label="Facebook di Nicola Fiore">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+          Facebook
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL LIBRI IN USCITA -->
+<div id="releaseOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="releaseTitleHeading">
+  <div class="modal-shell modal-release">
+    <button class="modal-close" type="button" aria-label="Chiudi annuncio">✕</button>
+    <div class="modal-release-content">
+      <span class="badge badge-coming">Prossimamente</span>
+      <img class="modal-release-cover" src="images/GIOVINAZZOthroughmyeyes.jpeg" alt="Copertina di GIOVINAZZO through my eyes">
+      <h2 id="releaseTitleHeading" class="modal-release-title">GIOVINAZZO through my eyes - ENGLISH EDITION</h2>
+      <p class="modal-release-desc">
+        GIOVINAZZO through my eyes è la versione in inglese del libro "GIOVINAZZO coi miei occhi".
+        Già disponibile su Amazon e su tutti i marketplace sia in B/N che nella Full Color Edition.
+      </p>
+      <p class="modal-release-tagline">Il prossimo capitolo sta per arrivare.</p>
+
+      <div id="countdown">
+        <div class="countdown-box">
+          <span id="days">00</span>
+          <small>Giorni</small>
+        </div>
+        <div class="countdown-box">
+          <span id="hours">00</span>
+          <small>Ore</small>
+        </div>
+        <div class="countdown-box">
+          <span id="minutes">00</span>
+          <small>Minuti</small>
+        </div>
+        <div class="countdown-box">
+          <span id="seconds">00</span>
+          <small>Secondi</small>
+        </div>
+      </div>
+
+      <p id="countdownExpired" class="countdown-expired is-hidden">✨ Disponibile ora, tra le novità NIFIO.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ANIMAZIONE -->
+<div id="animOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Animazione NIFIO">
+  <div class="modal-shell modal-animation">
+    <button class="modal-close" type="button" aria-label="Chiudi animazione">✕</button>
+    <div class="animation-frame">
+      <canvas id="animCanvas"></canvas>
+    </div>
+    <p class="animation-caption">Una pallina rimbalza tra i mattoncini della scritta NIFIO.</p>
+  </div>
+</div>
+
+<script src="app.js" defer></script>
 </body>
 </html>
