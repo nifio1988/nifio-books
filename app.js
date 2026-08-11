@@ -4,6 +4,18 @@
 
 const RELEASE_TARGET = new Date("2026-07-24T00:00:00").getTime();
 
+// The book the "Libri in uscita" modal spotlights on load, matched by exact
+// title against books.json (same pattern as the `collections` matching).
+const FEATURED_RELEASE_TITLE = "GIOVINAZZO Through My Eyes - Full Color Edition";
+
+// Single source of truth for "is this book actually upcoming". A book with a
+// real Amazon link is always treated as available, even if `prossimamente`
+// was left set to true in books.json by mistake.
+function isBookUpcoming(book) {
+  const hasAmazonLink = Boolean(book.amazon && book.amazon.trim() !== "");
+  return book.prossimamente === true && !hasAmazonLink;
+}
+
 const WHATSAPP_NUMBER = "393490077537";
 const WHATSAPP_MESSAGE = "Ciao Nicola, ho visitato NIFIO BOOKS e vorrei avere maggiori informazioni sui tuoi libri.";
 const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
@@ -157,6 +169,7 @@ function init() {
       renderCategories();
       renderCollections();
       renderAuthorCollections();
+      renderReleaseSpotlight();
     })
     .catch(() => {
       grid.innerHTML = '<div class="empty-state"><strong>Catalogo non disponibile</strong><p>Riprova più tardi.</p></div>';
@@ -180,7 +193,7 @@ function renderGrid(list) {
     card.className = "card";
     card.setAttribute("aria-label", `Apri la scheda di ${book.title}`);
 
-    const comingBadge = book.prossimamente === true ? '<span class="badge badge-coming">Prossimamente</span>' : "";
+    const comingBadge = isBookUpcoming(book) ? '<span class="badge badge-coming">Prossimamente</span>' : "";
     const tags = (book.category || []).map((c) => `<span class="tag">${c}</span>`).join("");
 
     card.innerHTML = `
@@ -265,7 +278,7 @@ function openBookModal(book, triggerEl) {
 
   mTags.innerHTML = (book.category || []).map((c) => `<span class="tag">${c}</span>`).join("");
 
-  mComing.classList.toggle("is-hidden", book.prossimamente !== true);
+  mComing.classList.toggle("is-hidden", !isBookUpcoming(book));
 
   const hasSinossi = Boolean(book.sinossi && book.sinossi.trim() !== "");
   mSinossiLabel.classList.toggle("is-hidden", !hasSinossi);
@@ -362,6 +375,13 @@ document.querySelectorAll(".js-open-author").forEach((btn) => {
 /* ---------------- modal libri in uscita ---------------- */
 
 const releaseOverlay = document.getElementById("releaseOverlay");
+const releaseBadge = document.getElementById("releaseBadge");
+const releaseCover = document.getElementById("releaseCover");
+const releaseTitleHeading = document.getElementById("releaseTitleHeading");
+const releaseDesc = document.getElementById("releaseDesc");
+const releaseTagline = document.getElementById("releaseTagline");
+const releaseCountdownSection = document.getElementById("releaseCountdownSection");
+const releaseAmazonBtn = document.getElementById("releaseAmazonBtn");
 const countdownGrid = document.getElementById("countdown");
 const countdownExpired = document.getElementById("countdownExpired");
 const elDays = document.getElementById("days");
@@ -396,9 +416,53 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
+// The release modal only ever reflects the real state of the featured book
+// in books.json (via isBookUpcoming) — it never shows PROSSIMAMENTE on its
+// own. It still auto-opens on load, but only once the catalog has actually
+// loaded AND a matching featured book was found, guarded by two ready flags
+// so it can't race the "load" event and flash stale/empty content.
+let pageLoaded = false;
+let releaseSpotlightReady = false;
+
+function maybeOpenReleaseModal() {
+  if (pageLoaded && releaseSpotlightReady) {
+    openOverlay(releaseOverlay);
+  }
+}
+
 window.addEventListener("load", () => {
-  openOverlay(releaseOverlay);
+  pageLoaded = true;
+  maybeOpenReleaseModal();
 });
+
+function renderReleaseSpotlight() {
+  const book = books.find((b) => b.title === FEATURED_RELEASE_TITLE);
+  if (!book) return;
+
+  const upcoming = isBookUpcoming(book);
+  const hasAmazon = Boolean(book.amazon && book.amazon.trim() !== "");
+
+  releaseCover.src = book.cover;
+  releaseCover.alt = `Copertina di ${book.title}`;
+  releaseTitleHeading.textContent = book.title;
+  releaseDesc.textContent = book.description || "";
+  releaseTagline.textContent = upcoming
+    ? "Il prossimo capitolo sta per arrivare."
+    : "Disponibile ora tra le novità NIFIO.";
+
+  releaseBadge.classList.toggle("is-hidden", !upcoming);
+  releaseCountdownSection.classList.toggle("is-hidden", !upcoming);
+
+  releaseAmazonBtn.classList.toggle("is-hidden", !hasAmazon);
+  if (hasAmazon) {
+    releaseAmazonBtn.href = book.amazon;
+  } else {
+    releaseAmazonBtn.removeAttribute("href");
+  }
+
+  releaseSpotlightReady = true;
+  maybeOpenReleaseModal();
+}
 
 /* ---------------- gioco NIFIO ---------------- */
 
@@ -690,10 +754,24 @@ function stopGame() {
   keyState.right = false;
 }
 
-gameRestartBtn.addEventListener("click", () => {
+function restartGame() {
   resetGame();
   if (animFrameId) cancelAnimationFrame(animFrameId);
   animLoop();
+}
+
+gameRestartBtn.addEventListener("click", restartGame);
+
+// On touch devices, .animation-frame's own touchstart handler (used for
+// paddle dragging, above) calls preventDefault() on every touch inside the
+// frame — including a tap on this button — which suppresses the browser's
+// synthetic "click" that would normally follow it. pointerup is a separate,
+// direct event unaffected by that preventDefault(), so it still fires for
+// touch/pen. Ignoring pointerType "mouse" here keeps desktop on the click
+// handler above so a mouse click only ever triggers restartGame() once.
+gameRestartBtn.addEventListener("pointerup", (e) => {
+  if (e.pointerType === "mouse") return;
+  restartGame();
 });
 
 document.querySelectorAll(".js-open-anim").forEach((btn) => {

@@ -254,35 +254,36 @@
   <div class="modal-shell modal-release">
     <button class="modal-close" type="button" aria-label="Chiudi annuncio">✕</button>
     <div class="modal-release-content">
-      <span class="badge badge-coming">Prossimamente</span>
-      <img class="modal-release-cover" src="images/GIOVINAZZOthroughmyeyes.jpeg" alt="Copertina di GIOVINAZZO through my eyes">
-      <h2 id="releaseTitleHeading" class="modal-release-title">GIOVINAZZO through my eyes - ENGLISH EDITION</h2>
-      <p class="modal-release-desc">
-        GIOVINAZZO through my eyes è la versione in inglese del libro "GIOVINAZZO coi miei occhi".
-        Già disponibile su Amazon e su tutti i marketplace sia in B/N che nella Full Color Edition.
-      </p>
-      <p class="modal-release-tagline">Il prossimo capitolo sta per arrivare.</p>
+      <span id="releaseBadge" class="badge badge-coming is-hidden">Prossimamente</span>
+      <img id="releaseCover" class="modal-release-cover" src="" alt="">
+      <h2 id="releaseTitleHeading" class="modal-release-title"></h2>
+      <p id="releaseDesc" class="modal-release-desc"></p>
+      <p id="releaseTagline" class="modal-release-tagline"></p>
 
-      <div id="countdown">
-        <div class="countdown-box">
-          <span id="days">00</span>
-          <small>Giorni</small>
+      <div id="releaseCountdownSection" class="is-hidden">
+        <div id="countdown">
+          <div class="countdown-box">
+            <span id="days">00</span>
+            <small>Giorni</small>
+          </div>
+          <div class="countdown-box">
+            <span id="hours">00</span>
+            <small>Ore</small>
+          </div>
+          <div class="countdown-box">
+            <span id="minutes">00</span>
+            <small>Minuti</small>
+          </div>
+          <div class="countdown-box">
+            <span id="seconds">00</span>
+            <small>Secondi</small>
+          </div>
         </div>
-        <div class="countdown-box">
-          <span id="hours">00</span>
-          <small>Ore</small>
-        </div>
-        <div class="countdown-box">
-          <span id="minutes">00</span>
-          <small>Minuti</small>
-        </div>
-        <div class="countdown-box">
-          <span id="seconds">00</span>
-          <small>Secondi</small>
-        </div>
+
+        <p id="countdownExpired" class="countdown-expired is-hidden">✨ Disponibile ora, tra le novità NIFIO.</p>
       </div>
 
-      <p id="countdownExpired" class="countdown-expired is-hidden">✨ Disponibile ora, tra le novità NIFIO.</p>
+      <a id="releaseAmazonBtn" class="btn btn-primary is-hidden" target="_blank" rel="noopener noreferrer">Apri su Amazon</a>
     </div>
   </div>
 </div>
