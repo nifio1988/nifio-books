@@ -170,9 +170,12 @@ function init() {
       renderCollections();
       renderAuthorCollections();
       renderReleaseSpotlight();
+      observeReveal(grid);
+      observeReveal(collectionsGrid);
     })
     .catch(() => {
       grid.innerHTML = '<div class="empty-state"><strong>Catalogo non disponibile</strong><p>Riprova più tardi.</p></div>';
+      observeReveal(grid);
     });
 }
 
@@ -822,23 +825,41 @@ window.addEventListener("scroll", () => {
 
 /* ---------------- scroll reveal ---------------- */
 
+let revealObserver = null;
+
 if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
+  revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+          revealObserver.unobserve(entry.target);
         }
       });
     },
     { threshold: 0.12 }
   );
-
-  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-} else {
-  document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
 }
+
+function observeReveal(el) {
+  if (!el) return;
+  if (revealObserver) {
+    revealObserver.observe(el);
+  } else {
+    el.classList.add("is-visible");
+  }
+}
+
+// #grid and #collectionsGrid start empty at parse time and only get their
+// real content once books.json has loaded (see init() below). Observing an
+// empty element and relying on the observer to notice it growing later isn't
+// reliable on every mobile browser — it can leave the element permanently
+// stuck at opacity:0 even though its content rendered correctly. So these
+// two are deliberately excluded here and observed separately, from init(),
+// only once they actually have content.
+document.querySelectorAll(".reveal").forEach((el) => {
+  if (el !== grid && el !== collectionsGrid) observeReveal(el);
+});
 
 /* ---------------- footer year ---------------- */
 
