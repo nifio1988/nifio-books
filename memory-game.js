@@ -39,6 +39,50 @@ let totalPairs = 0;
 let moves = 0;
 let boardLocked = false;
 let pendingTimeoutId = null;
+let boardResizeObserver = null;
+let boardResizeHandler = null;
+
+/* ---------------- board layout (no-scroll: every card must fit on screen) ----------------
+
+   The board is a flex:1 child of a fixed-height modal, so its own pixel box
+   never exceeds the viewport. Instead of a width-only CSS auto-fill grid
+   (which ignores the available height and can force a taller-than-viewport
+   grid that must scroll), we measure the board's real box here and search
+   for the cols x rows split that maximizes card size while both axes still
+   fit exactly — the result is written as CSS custom properties the grid
+   reads, so it's always the whole game area, never a scrolling list. */
+
+function computeCardGrid(containerW, containerH, gap, count) {
+  const targetAspect = 3 / 4; // desired card width/height ratio
+  let best = { cols: 1, rows: count, metric: -1 };
+
+  for (let cols = 1; cols <= count; cols++) {
+    const rows = Math.ceil(count / cols);
+    const cellW = (containerW - gap * (cols - 1)) / cols;
+    const cellH = (containerH - gap * (rows - 1)) / rows;
+    if (cellW <= 0 || cellH <= 0) continue;
+
+    const metric = Math.min(cellH, cellW / targetAspect);
+    if (metric > best.metric) {
+      best = { cols, rows, metric };
+    }
+  }
+
+  return best;
+}
+
+function layoutBoard() {
+  if (!totalPairs) return;
+
+  const rect = memoryBoard.getBoundingClientRect();
+  if (rect.width < 1 || rect.height < 1) return;
+
+  const gap = parseFloat(getComputedStyle(memoryBoard).gap) || 0;
+  const { cols, rows } = computeCardGrid(rect.width, rect.height, gap, totalPairs * 2);
+
+  memoryBoard.style.setProperty("--memory-cols", String(cols));
+  memoryBoard.style.setProperty("--memory-rows", String(rows));
+}
 
 /* ---------------- deck data (books.json -> cover/title pool) ---------------- */
 
@@ -158,6 +202,7 @@ function resetBoard(pool) {
   });
 
   updateHud();
+  layoutBoard();
 }
 
 function showLoadError() {
@@ -236,12 +281,30 @@ function startMemoryGame() {
   loadCoverPool()
     .then((pool) => resetBoard(pool))
     .catch(showLoadError);
+
+  if ("ResizeObserver" in window) {
+    if (!boardResizeObserver) {
+      boardResizeObserver = new ResizeObserver(() => layoutBoard());
+    }
+    boardResizeObserver.observe(memoryBoard);
+  } else if (!boardResizeHandler) {
+    boardResizeHandler = () => layoutBoard();
+    window.addEventListener("resize", boardResizeHandler);
+  }
 }
 
 function stopMemoryGame() {
   clearPendingTimeout();
   flipped = [];
   boardLocked = false;
+
+  if (boardResizeObserver) {
+    boardResizeObserver.disconnect();
+  }
+  if (boardResizeHandler) {
+    window.removeEventListener("resize", boardResizeHandler);
+    boardResizeHandler = null;
+  }
 }
 
 memoryOverlay.addEventListener("overlay:open", startMemoryGame);

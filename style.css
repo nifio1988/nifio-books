@@ -1575,21 +1575,46 @@ section[id] {
 
 /* ---------- NIFIO-BOOKS MEMORY ---------- */
 
+/* The board must always fit on screen with zero scrolling (mobile included):
+   .modal-memory gets a hard, viewport-bounded height instead of the shared
+   .modal-shell's max-height+overflow-y:auto, its content becomes a flex
+   column (title/hud fixed, board flex:1), and memory-game.js measures the
+   board's real pixel box on open/resize to pick a cols x rows grid (via CSS
+   vars) that maximizes card size while guaranteeing every card is visible
+   at once — see computeCardGrid()/layoutBoard() in memory-game.js. */
+
 .modal-memory {
   max-width: 1000px;
   width: 94vw;
+  height: min(85vh, 720px);
+  height: min(85svh, 720px);
+  max-height: none;
+  display: flex;
+  overflow: hidden;
 }
 
 .modal-memory-content {
   position: relative;
-  padding: clamp(24px, 4vw, 34px) clamp(16px, 3vw, 32px) clamp(28px, 4vw, 36px);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: clamp(14px, 3vw, 28px) clamp(14px, 3vw, 28px) clamp(12px, 2.5vw, 22px);
+  overflow: hidden;
+}
+
+.modal-memory .modal-title {
+  flex-shrink: 0;
+  font-size: clamp(1.1rem, 4vw, 1.7rem);
 }
 
 .memory-hud {
+  flex-shrink: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin: 14px 0 20px;
+  gap: 8px;
+  margin: 10px 0 14px;
 }
 
 .memory-stat {
@@ -1605,14 +1630,21 @@ section[id] {
 }
 
 .memory-board {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-  gap: clamp(8px, 1.8vw, 16px);
+  grid-template-columns: repeat(var(--memory-cols, 4), 1fr);
+  grid-template-rows: repeat(var(--memory-rows, 4), 1fr);
+  gap: clamp(6px, 1.6vw, 14px);
 }
 
 .memory-card {
   position: relative;
-  aspect-ratio: 3 / 4;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
   background: none;
   border: none;
   padding: 0;
@@ -1749,18 +1781,6 @@ section[id] {
   }
   75% {
     transform: rotateY(180deg) translateX(5px);
-  }
-}
-
-@media (min-width: 640px) {
-  .memory-board {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  }
-}
-
-@media (min-width: 1024px) {
-  .memory-board {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   }
 }
 
