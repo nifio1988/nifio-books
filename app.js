@@ -774,10 +774,10 @@ gameRestartBtn.addEventListener("pointerup", (e) => {
   restartGame();
 });
 
-document.querySelectorAll(".js-open-anim").forEach((btn) => {
-  btn.addEventListener("click", () => openOverlay(animOverlay, btn));
-});
-
+// Trigger wiring for animOverlay lives in memory-game.js now (it also owns
+// the NIFIO-GAMES hub and needs to close/open animOverlay alongside the
+// other game modal), so it isn't duplicated here — this file only keeps the
+// overlay lifecycle hooks the game itself depends on.
 animOverlay.addEventListener("overlay:open", startGame);
 animOverlay.addEventListener("overlay:close", stopGame);
 

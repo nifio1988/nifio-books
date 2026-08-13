@@ -44,7 +44,7 @@
       <a class="nav-link" href="#collane">Collane</a>
       <a class="nav-link" href="#libreria">Libreria</a>
       <button class="nav-link js-open-author" type="button">Chi è Nicola Fiore?</button>
-      <button class="nav-link js-open-anim" type="button">🎮 Gioca a NIFIO</button>
+      <button class="nav-link js-open-games" type="button">🎮 Gioca ai NIFIO-GAMES</button>
       <button class="nav-link js-nav-guest" type="button">Accedi</button>
       <button class="nav-link nav-user-chip js-nav-user is-hidden" type="button">
         <span class="nav-avatar-wrap">
@@ -64,7 +64,7 @@
     <a class="nav-link" href="#collane">Collane</a>
     <a class="nav-link" href="#libreria">Libreria</a>
     <button class="nav-link js-open-author" type="button">Chi è Nicola Fiore?</button>
-    <button class="nav-link js-open-anim" type="button">🎮 Gioca a NIFIO</button>
+    <button class="nav-link js-open-games" type="button">🎮 Gioca ai NIFIO-GAMES</button>
     <button class="nav-link js-nav-guest" type="button">Accedi</button>
     <button class="nav-link nav-user-chip js-nav-user is-hidden" type="button">
       <span class="nav-avatar-wrap">
@@ -150,7 +150,7 @@
           <a href="#collane">Collane</a>
           <a href="#libreria">Libreria</a>
           <button type="button" class="js-open-author">Chi è Nicola Fiore?</button>
-          <button type="button" class="js-open-anim">Gioca a NIFIO</button>
+          <button type="button" class="js-open-games">Gioca ai NIFIO-GAMES</button>
         </div>
       </div>
 
@@ -313,8 +313,40 @@
   </div>
 </div>
 
-<!-- MODAL GIOCO NIFIO -->
-<div id="animOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Gioco NIFIO">
+<!-- MODAL NIFIO-GAMES (hub) -->
+<div id="gamesOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="gamesHeading">
+  <div class="modal-shell modal-games">
+    <button class="modal-close" type="button" aria-label="Chiudi NIFIO-GAMES">✕</button>
+    <div class="modal-games-content">
+      <p class="modal-caption">Area giochi</p>
+      <h2 id="gamesHeading" class="modal-title">NIFIO-GAMES</h2>
+      <p class="modal-lead">Scegli a cosa giocare.</p>
+
+      <div class="games-list">
+        <button class="game-tile js-open-bricks" type="button">
+          <span class="game-tile-icon" aria-hidden="true">🧱</span>
+          <span class="game-tile-body">
+            <span class="game-tile-name">NIFIO-BRICKS</span>
+            <span class="game-tile-desc">Il classico mattoncini, in salsa NIFIO.</span>
+          </span>
+          <span class="game-tile-cta" aria-hidden="true">Gioca →</span>
+        </button>
+
+        <button class="game-tile js-open-memory" type="button">
+          <span class="game-tile-icon" aria-hidden="true">🃏</span>
+          <span class="game-tile-body">
+            <span class="game-tile-name">NIFIO-BOOKS MEMORY</span>
+            <span class="game-tile-desc">Trova le coppie tra le copertine dei libri.</span>
+          </span>
+          <span class="game-tile-cta" aria-hidden="true">Gioca →</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL GIOCO NIFIO-BRICKS -->
+<div id="animOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Gioco NIFIO-BRICKS">
   <div class="modal-shell modal-animation">
     <button class="modal-close" type="button" aria-label="Chiudi il gioco">✕</button>
     <div class="animation-frame">
@@ -326,6 +358,29 @@
         <p id="gameEndTitle" class="game-end-title">Game Over</p>
         <p id="gameEndScore" class="game-end-score"></p>
         <button id="gameRestartBtn" class="btn btn-primary" type="button">Rigioca</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL GIOCO NIFIO-BOOKS MEMORY -->
+<div id="memoryOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="memoryHeading">
+  <div class="modal-shell modal-memory">
+    <button class="modal-close" type="button" aria-label="Chiudi NIFIO-BOOKS MEMORY">✕</button>
+    <div class="modal-memory-content">
+      <h2 id="memoryHeading" class="modal-title">NIFIO-BOOKS MEMORY</h2>
+
+      <div class="memory-hud">
+        <span id="memoryPairs" class="memory-stat">COPPIE: 0 / 0</span>
+        <span id="memoryMoves" class="memory-stat">MOSSE: 0</span>
+      </div>
+
+      <div id="memoryBoard" class="memory-board" role="group" aria-label="Griglia di gioco Memory"></div>
+
+      <div id="memoryEndOverlay" class="game-end is-hidden">
+        <p class="game-end-title">HAI COMPLETATO NIFIO-BOOKS MEMORY!</p>
+        <p id="memoryEndMoves" class="game-end-score"></p>
+        <button id="memoryRestartBtn" class="btn btn-primary" type="button">Rigioca</button>
       </div>
     </div>
   </div>
@@ -412,6 +467,7 @@
 </div>
 
 <script src="app.js" defer></script>
+<script src="memory-game.js" defer></script>
 <script src="nifio-wave.js" defer></script>
 <script type="module" src="auth.js"></script>
 </body>
